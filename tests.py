@@ -1,5 +1,4 @@
 from clui import base_clui
-import random
 
 def add_flashcards():
     print "Adding some flashcards..."
@@ -10,6 +9,7 @@ def delete_flashcards():
     print "Done!"
 
 class will_not_be_named(object):
+    func_name = 'dick' #if you don't want to see <class '__main__.will_not_be_named'>
     def __init__(self):
         print "This function will not be the name of added menu option, because it was not added first."
 
@@ -19,28 +19,29 @@ def exit_function():
 def exit2():
     print "TEARDOWN"
     
-def test_condition(user_input,looped):
+def my_condition_test(user_input,looped):
     if user_input == 'dick':
         return False
     return True
 
-title = 'Flashcards'
-initial_message = 'Flashcards is a python utility designed to help you know your stuff!'
-exit_message = 'Bye! I hope you enjoyed your stay.'
+ui = base_clui() #Create an instance of the base_clui class
 
-ui = base_clui()
-ui.title = title
-ui.initial_message = initial_message
-ui.exit_message = exit_message
-ui.exit_words.append('precise *(pangolin)?')
-#ui.start_with_zero=True #DOCUMENT
-#ui.display_all_callables = True
-ui.exit_callables = [exit_function,exit2] #A list of callables that will called
-ui.condition_tests = [test_condition]
-#recursively, and in order.
+#Here we define the interface's global attributes
+#------------------------------------------------------------------------------
+ui.title = 'Flashcards'
+ui.exit_words.append('^(goose|geese)$')
+ui.exit_message = 'Thank you for using flashcards! Bye!' #Optional
+ui.start_with_zero = True #Defaults to False
+ui.display_all_callables = True #Defaults to False
+ui.display_all_regex = True #Defaults to False
+ui.display_exit_words = True #Defaults to False
+ui.exit_callables = [exit_function,exit2] 
+ui.input_message = ': ' #Defaults to '> '
+ui.condition_tests = [my_condition_test] #Defaults to empty list
 
-ui.input_message = 'Next: '
-
+#Here we add 'options' to the menu interface.
+#Each menu option can over-ride the global attributes. #TODO: Implement this
+#------------------------------------------------------------------------------
 ui.add(
     callables=[delete_flashcards,will_not_be_named],
     patterns=[

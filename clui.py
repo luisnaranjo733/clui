@@ -32,6 +32,8 @@ clean up execute method, contain it's contents so users can replace the
 execute method
 
 __doc__ method in class?
+
+rename base_clui.condition to base_clui.__condition__
 """
 
 class base_clui(object):
@@ -76,15 +78,17 @@ class base_clui(object):
         self.looped = 0 #Gets a +1 for each loop. In case tracking the amount of loops is ever important.
 
     def __menu__(self):
+        """Returns a string representation of what the menu should look like.
+        
+        Uses the boolean attributes for it's logic"""
 
         line = ''
 
-        for option in self.menu:
+        for option in self.menu: #List of options
             colored = Fore.MAGENTA + option['display_name'] + Fore.RESET
             line += "{index}: {display_name}".format(index=option['index'],display_name=colored)
 
-            if option['display_callables'] or self.display_all_callables:
-                #line += '\n\t' + ','.join([function.func_name for function in option['callables']])
+            if option['display_callables'] or self.display_all_callables: #
 
                 callables = []
 
@@ -93,8 +97,8 @@ class base_clui(object):
                         callable_name = function.func_name #Only works for functions
                     except AttributeError:
                         callable_name = str(function) #This will probably happen to classes
-                    #callables.append(callable_name)
-                    callables.append(str(function))
+                    callables.append(callable_name)
+                    #callables.append(str(function))
                     #line += '{callable_name}'.format(callable_name=callable_name)
 
                 line +=  '\tCallables: ' +Fore.CYAN + str(callables)+ Fore.RESET 
