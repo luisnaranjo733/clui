@@ -32,7 +32,7 @@ ui.exit_words.append('precise *(pangolin)?')
 ui.exit_callables = [exit_function,exit2] #A list of callables that will called
 #recursively, and in order.
 
-ui.input_message = 'What do you want now? '
+ui.input_message = 'Next: '
 
 ui.add(
     callables=[delete_flashcards,will_not_be_named],

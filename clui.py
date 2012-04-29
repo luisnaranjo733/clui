@@ -123,7 +123,7 @@ class base_clui(object):
                 function()
                 print buff
 
-    def add(self,callables,patterns=None,display_name=None,synopsis=None,display_callables=False,display_regex=False):
+    def add(self,**kwargs):
         """
         This method adds commands to the self.menu list, which is used to gen
         erate the clui.
@@ -151,7 +151,12 @@ class base_clui(object):
             This boolean defines controls whether or not an additional list of callables is
             added for *each* menu option.
         """
-        
+        callables = kwargs.pop('callables',None)
+        patterns = kwargs.pop('patterns',None)
+        display_name = kwargs.pop('display_name',None)
+        synopsis = kwargs.pop('synopsis',None)
+        display_callables = kwargs.pop('display_callables',False)
+        display_regex = kwargs.pop('display_regex',False)
 
         try:
             backup_name = callables[0].func_name #The name of the first function defined in the list of callables.
