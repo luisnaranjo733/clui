@@ -23,8 +23,15 @@ UPDATE DOCUMENTATION
     Minimalistic "Hello, World clui?" (3-4 lines)
 function.func_name for classes?
 figure out what the correct way of adding images to readthedocs is!
-exit_words regex matching DOCS
 
+customize colors in colorama
+
+recursive message?
+
+clean up execute method, contain it's contents so users can replace the
+execute method
+
+__doc__ method in class?
 """
 
 class base_clui(object):
@@ -62,6 +69,7 @@ class base_clui(object):
         self.display_all_regex = kwargs.pop('display_all_regex',False)
         self.display_exit_words = kwargs.pop('display_exit_words',True)
         self.exit_callables = kwargs.pop('exit_callables',[])
+        self.input_message = kwargs.pop('input_message','> ')
         self.menu = [] #List of options for the clui to use
         self.looped = 0 #Gets a +1 for each loop. In case tracking the amount of loops is ever important.
 
@@ -202,7 +210,7 @@ class base_clui(object):
             #print Back.BLACK #Optional?
             print '*'*72+"\n"
             print self.__menu__()
-            user_input = raw_input("> ")
+            user_input = raw_input(self.input_message)
 
             print '' #Buffer line
             
