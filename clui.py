@@ -70,6 +70,8 @@ class base_clui(object):
         self.display_exit_words = kwargs.pop('display_exit_words',False)
         self.exit_callables = kwargs.pop('exit_callables',[])
         self.input_message = kwargs.pop('input_message','> ')
+        self.condition = kwargs.pop('condition',True)
+        self.test_condition = kwargs.pop('test_condition',None)
         self.menu = [] #List of options for the clui to use
         self.looped = 0 #Gets a +1 for each loop. In case tracking the amount of loops is ever important.
 
@@ -194,7 +196,6 @@ class base_clui(object):
         of the options for your menu, because it will enter a loop, and it won't exit
         until the user's input is in the exit_words list (defined in __init__).
         """
-        condition = True
         width = 70
 
         if self.title:
@@ -211,7 +212,10 @@ class base_clui(object):
             print "Enter one of the following words to escape: " + Fore.RED + str(self.exit_words) + Fore.RESET
             print ''
 
-        while condition:
+        while self.condition:
+            if self.test_condition:
+                self.condition = self.test_condition()
+                print "Continue? "+ str(self.condition)
             #print Back.BLACK #Optional?
             print '*'*72+"\n"
             print self.__menu__()
@@ -234,7 +238,7 @@ class base_clui(object):
             for pattern in self.exit_words:
                 match = re.search(pattern,user_input)
                 if match:
-                    condition=False#TODO: Add condition for while loop and way
+                    self.condition=False#TODO: Add condition for while loop and way
                     #to break it
                     self.__call__(self.exit_callables)
                     if self.exit_message:

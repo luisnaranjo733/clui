@@ -1,4 +1,5 @@
 from clui import base_clui
+import random
 
 def add_flashcards():
     print "Adding some flashcards..."
@@ -17,6 +18,11 @@ def exit_function():
 
 def exit2():
     print "TEARDOWN"
+    
+def test_condition():
+    val = random.randint(1,2)
+    if val == 1: return True
+    if val == 2: return False
 
 title = 'Flashcards'
 initial_message = 'Flashcards is a python utility designed to help you know your stuff!'
@@ -30,6 +36,7 @@ ui.exit_words.append('precise *(pangolin)?')
 #ui.start_with_zero=True #DOCUMENT
 #ui.display_all_callables = True
 ui.exit_callables = [exit_function,exit2] #A list of callables that will called
+ui.test_condition = test_condition
 #recursively, and in order.
 
 ui.input_message = 'Next: '
