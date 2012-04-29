@@ -67,7 +67,7 @@ class base_clui(object):
         self.start_with_zero = kwargs.pop('start_with_zero',False)
         self.display_all_callables = kwargs.pop('display_all_callables',False)
         self.display_all_regex = kwargs.pop('display_all_regex',False)
-        self.display_exit_words = kwargs.pop('display_exit_words',True)
+        self.display_exit_words = kwargs.pop('display_exit_words',False)
         self.exit_callables = kwargs.pop('exit_callables',[])
         self.input_message = kwargs.pop('input_message','> ')
         self.menu = [] #List of options for the clui to use
