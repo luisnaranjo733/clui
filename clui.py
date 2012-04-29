@@ -15,7 +15,7 @@ import subprocess
 from sys import platform
 from colorama import Fore, Back, Style,init,deinit
 
-init()
+init() #required for x-platform support by colorama
 
 TODO = """
 Resolve dependency issues - what to do if colorama is unavailable?
@@ -216,34 +216,35 @@ class base_clui(object):
             self.looped += 1
 
             print '*'*72+"\n"
-            print self.__menu__()
+            print self.__menu__() #gen menu as string
             user_input = raw_input(self.input_message)
 
-            if self.condition_tests:
+            if self.condition_tests: #user defined tests
                 for condition_test in self.condition_tests:
                     self.condition = condition_test(user_input,self.looped)
-                print "Continue? "+ str(self.condition)
+                    if not self.condition:
+                        print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL #FIXME: This is copy and paste from the __chexit__ method.
+                                                                                                         #For some reason this was double printing when I ran chexit
 
             print '' #Buffer line
             
-            for patterns,callables in self.__patterns__():
+            for patterns,callables in self.__patterns__(): #checking menu option patterns
                 for pattern in patterns:
-                    #print "Trying: ",pattern
                     match = re.search(pattern,user_input)
 
-                    if match:
-                        buff = '='*72
-                        #print buff
-                        self.__call__(callables)
-                        #print buff+'\n'
+                    if match: self.__call__(callables)
             
-            for pattern in self.exit_words:
+            self.__chexit__(user_input) #Check for exit words
+            
+    def __chexit__(self,user_input,exit=False):
+            
+            for pattern in self.exit_words:#checking for exit words
                 match = re.search(pattern,user_input)
-                if match:
+                if match or exit:
                     self.condition=False
                     #to break it
                     self.__call__(self.exit_callables)
                     if self.exit_message:
                         print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL
 
-deinit()
+deinit() #required for x-platform support by colorama
