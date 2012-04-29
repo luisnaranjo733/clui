@@ -21,13 +21,12 @@ def exit2():
 title = 'Flashcards'
 initial_message = 'Flashcards is a python utility designed to help you know your stuff!'
 exit_message = 'Bye! I hope you enjoyed your stay.'
-exit_words = ['end','exit','leave','bye','idgaf']
 
 ui = base_clui()
 ui.title = title
 ui.initial_message = initial_message
 ui.exit_message = exit_message
-ui.exit_words = exit_words
+ui.exit_words.append('precise *(pangolin)?')
 #ui.start_with_zero=True #DOCUMENT
 #ui.display_all_callables = True
 ui.exit_callables = [exit_function,exit2] #A list of callables that will called

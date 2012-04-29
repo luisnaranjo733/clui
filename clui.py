@@ -23,7 +23,6 @@ UPDATE DOCUMENTATION
     Minimalistic "Hello, World clui?" (3-4 lines)
 function.func_name for classes?
 figure out what the correct way of adding images to readthedocs is!
-exit_callable attribute and functionality! DOCS
 exit_words regex matching DOCS
 
 """
@@ -56,7 +55,7 @@ class base_clui(object):
 
         self.title = kwargs.pop('title', None)
         self.initial_message = kwargs.pop('initial_message', None)
-        self.exit_words = kwargs.pop('exit_words', 'end exit leave bye'.split())
+        self.exit_words = kwargs.pop('exit_words', '^end$ ^exit$ ^leave$ ^bye$'.split())
         self.exit_message = kwargs.pop('exit_message', None)
         self.start_with_zero = kwargs.pop('start_with_zero',False)
         self.display_all_callables = kwargs.pop('display_all_callables',False)
@@ -218,12 +217,14 @@ class base_clui(object):
                         self.__call__(callables)
                         #print buff+'\n'
             self.looped += 1
-
-            if user_input in self.exit_words: #Breaks the loop if the keywords are met
-                condition=False
-                self.__call__(self.exit_callables)
-                if self.exit_message:
-                    print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL
-                #print Back.RESET #Optional?
+            
+            for pattern in self.exit_words:
+                match = re.search(pattern,user_input)
+                if match:
+                    condition=False#TODO: Add condition for while loop and way
+                    #to break it
+                    self.__call__(self.exit_callables)
+                    if self.exit_message:
+                        print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL
 
 deinit()
