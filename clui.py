@@ -71,7 +71,7 @@ class base_clui(object):
         self.exit_callables = kwargs.pop('exit_callables',[])
         self.input_message = kwargs.pop('input_message','> ')
         self.condition = kwargs.pop('condition',True)
-        self.test_condition = kwargs.pop('test_condition',None)
+        self.condition_tests = kwargs.pop('condition_tests',[])
         self.menu = [] #List of options for the clui to use
         self.looped = 0 #Gets a +1 for each loop. In case tracking the amount of loops is ever important.
 
@@ -213,8 +213,10 @@ class base_clui(object):
             print ''
 
         while self.condition:
-            if self.test_condition:
-                self.condition = self.test_condition()
+            self.looped += 1
+            if self.condition_tests:
+                for condition_test in self.condition_tests:
+                    self.condition = condition_test(self.looped)
                 print "Continue? "+ str(self.condition)
             #print Back.BLACK #Optional?
             print '*'*72+"\n"
@@ -233,7 +235,6 @@ class base_clui(object):
                         #print buff
                         self.__call__(callables)
                         #print buff+'\n'
-            self.looped += 1
             
             for pattern in self.exit_words:
                 match = re.search(pattern,user_input)
