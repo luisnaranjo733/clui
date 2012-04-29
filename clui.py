@@ -214,14 +214,15 @@ class base_clui(object):
 
         while self.condition:
             self.looped += 1
-            if self.condition_tests:
-                for condition_test in self.condition_tests:
-                    self.condition = condition_test(self.looped)
-                print "Continue? "+ str(self.condition)
-            #print Back.BLACK #Optional?
+
             print '*'*72+"\n"
             print self.__menu__()
             user_input = raw_input(self.input_message)
+
+            if self.condition_tests:
+                for condition_test in self.condition_tests:
+                    self.condition = condition_test(user_input,self.looped)
+                print "Continue? "+ str(self.condition)
 
             print '' #Buffer line
             
@@ -239,7 +240,7 @@ class base_clui(object):
             for pattern in self.exit_words:
                 match = re.search(pattern,user_input)
                 if match:
-                    self.condition=False#TODO: Add condition for while loop and way
+                    self.condition=False
                     #to break it
                     self.__call__(self.exit_callables)
                     if self.exit_message:

@@ -19,11 +19,9 @@ def exit_function():
 def exit2():
     print "TEARDOWN"
     
-def test_condition(looped):
-    val = 4#random.randint(1,2)
-    if val == 1: return True
-    if val == 2: return False
-    if looped == 5: return False
+def test_condition(user_input,looped):
+    if user_input == 'dick':
+        return False
     return True
 
 title = 'Flashcards'
