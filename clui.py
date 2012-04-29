@@ -62,6 +62,7 @@ class base_clui(object):
         self.display_all_callables = kwargs.pop('display_all_callables',False)
         self.display_all_regex = kwargs.pop('display_all_regex',False)
         self.display_exit_words = kwargs.pop('display_exit_words',True)
+        self.exit_callables = kwargs.pop('exit_callables',[])
         self.menu = [] #List of options for the clui to use
         self.looped = 0 #Gets a +1 for each loop. In case tracking the amount of loops is ever important.
 
@@ -220,6 +221,7 @@ class base_clui(object):
 
             if user_input in self.exit_words: #Breaks the loop if the keywords are met
                 condition=False
+                self.__call__(self.exit_callables)
                 if self.exit_message:
                     print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL
                 #print Back.RESET #Optional?

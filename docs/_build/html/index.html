@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CLUI - Command Line User Interface &mdash; clui 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="clui 1.0 documentation" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="#">clui 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="clui-command-line-user-interface">
+<h1>CLUI - Command Line User Interface<a class="headerlink" href="#clui-command-line-user-interface" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<dl class="docutils">
+<dt><strong>An open source python object-ooriented API for creating command line user interfaces on the fly.</strong></dt>
+<dd>Created by <em>Luis Naranjo Gomez</em></dd>
+</dl>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>As <em>always</em>, you should use to pip to install.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">clui</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-clui">
+<span id="usage"></span><h2>Usage<a class="headerlink" href="#module-clui" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="clui.base_clui">
+<em class="property">class </em><tt class="descclassname">clui.</tt><tt class="descname">base_clui</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the base class for a command line user interface.
+You can control the style of the interface with the attributes
+provided in this class. <em>All attributes are optional</em>.</p>
+<p>Kwargs:</p>
+<blockquote>
+<div><p>title (str): The title of your clui</p>
+<p>initial_message (str):  Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)</p>
+<dl class="docutils">
+<dt>exit_words (list): A list of regex strings. It matches the user&#8217;s input to these and exits the programs if it finds a match.</dt>
+<dd>The <strong>defaults</strong> are [&#8216;^end$&#8217;,&#8217;^exit$&#8217;,&#8217;^leave$&#8217;,&#8217;^bye&#8217;$]</dd>
+</dl>
+<p>exit_message (str): This is the message that clui displays when the user exits the interface.</p>
+<p>start_with_zero (bool): This controls the index values of the</p>
+</div></blockquote>
+<dl class="method">
+<dt id="clui.base_clui.add">
+<tt class="descname">add</tt><big>(</big><em>callables</em>, <em>patterns=None</em>, <em>display_name=None</em>, <em>synopsis=None</em>, <em>display_callables=False</em>, <em>display_regex=False</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method adds commands to the self.menu list, which is used to gen
+erate the clui.</p>
+<p>It has the following parameters:</p>
+<dl class="docutils">
+<dt>callables (positional)</dt>
+<dd>This is a <strong>list</strong> of callable functions/classes that clui will execute
+for that menu option (in the order that they were defined).
+<strong>These callables *will not* take any positional parameters</strong>.</dd>
+<dt>patterns (defaults to the name of the first callable)</dt>
+<dd>A <strong>list</strong> of regex strings that clui will use to match to user input (in order).
+If a match is found, the corresponding callable will executed.</dd>
+<dt>display_name (defaults to the name of the first callable)</dt>
+<dd>This is the <strong>string</strong> that will actually be displayed to the user for
+this option in the menu.</dd>
+<dt>synopsis (defaults to None)</dt>
+<dd>This is a brief summation of what each command does, it is shown to
+the right of its&#8217; corresponding command.</dd>
+<dt>display_callables (defaults to False)</dt>
+<dd>This boolean defines controls whether or not an additional list of callables is
+added for <em>each</em> menu option.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="clui.base_clui.execute">
+<tt class="descname">execute</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the mainloop of the clui. Only hit this after you have added all
+of the options for your menu, because it will enter a loop, and it won&#8217;t exit
+until the user&#8217;s input is in the exit_words list (defined in __init__).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="example-code">
+<h2>Example Code<a class="headerlink" href="#example-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">clui</span> <span class="kn">import</span> <span class="n">base_clui</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">add_flashcards</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;Adding some flashcards...&quot;</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;All done!&quot;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">delete_flashcards</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;Deleting all of the flashcards...&quot;</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;Done!&quot;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">will_not_be_named</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">print</span> <span class="s">&quot;This function will not be the name of added menu option, because it was not added first.&quot;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ui</span> <span class="o">=</span> <span class="n">base_clui</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">title</span> <span class="o">=</span> <span class="s">&#39;Flashcards&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">initial_message</span> <span class="o">=</span> <span class="s">&#39;Flashcards is a python utility designed to help you know your stuff!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">exit_message</span> <span class="o">=</span> <span class="s">&#39;Bye! I hope you enjoyed your stay.&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ui</span><span class="o">.</span><span class="n">exit_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;idgaf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ui</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">callables</span><span class="o">=</span><span class="p">[</span><span class="n">delete_flashcards</span><span class="p">,</span><span class="n">will_not_be_named</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">patterns</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s">&#39;[Rr]emove flashcards&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s">&#39;[Dd]elete flashcards!?&#39;</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="c">#display_callables = True,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ui</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">callables</span><span class="o">=</span><span class="p">[</span><span class="n">add_flashcards</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">patterns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;[Aa]dd flashcards&#39;</span><span class="p">,</span><span class="s">&#39;add&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">display_name</span><span class="o">=</span><span class="s">&#39;Add some flashcards!&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c">#display_callables = True,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-output">
+<h2>Example Output<a class="headerlink" href="#example-output" title="Permalink to this headline">¶</a></h2>
+<p>This is what the CLUI might look like!</p>
+<img alt="sample_output.png" src="sample_output.png" />
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://pypi.python.org/pypi/colorama">colorama</a></p>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CLUI - Command Line User Interface</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#module-clui">Usage</a></li>
+<li><a class="reference internal" href="#example-code">Example Code</a></li>
+<li><a class="reference internal" href="#example-output">Example Output</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="#">clui 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Luis Naranjo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
