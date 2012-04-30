@@ -1,73 +1,18 @@
 C.ommand L.ine U.ser I.nterface
 ******************************************
 
+.. image:: _static/logo/gold_white.png
+
+
 **Cross platform command line user interfaces generated on the fly.**
    Created by *Luis Naranjo Gomez*
-   
+
+**UNDER DEVELOPMENT**
+
 .. toctree::
    :maxdepth: 2
    
    installation
+   basic
    depth
-   
-Example Usage
-=============
-
-TOBEREMOVED
-
->>> from clui import base_clui
->>> 
->>> def add_flashcards():
-...     print "Adding some flashcards..."
-...     print "All done!"
-... 
->>> def delete_flashcards():
-...     print "Deleting all of the flashcards..."
-...     print "Done!"
-... 
->>> class will_not_be_named(object):
-...     def __init__(self):
-...         print "This class will not be the name of added menu option, because it was not added first."
-... 
->>> ui = base_clui(
-...     title = 'Flashcards',
-...     initial_message = 'Flashcards is a python utility designed to help you know your stuff!',
-...     exit_message = 'Bye! I hope you enjoyed your stay.',
-... )
-
-
-Example Output
-===============
-
-This is what the :term:`clui` might look like!
-
-.. image:: sample_output.png
-
-.. _customization:
-
-
-Dependencies
-************
-
-clui depends on `colorama`_ for coloring text.
-
-This is the only dependency other than the standard python library.
-
-.. _colorama: http://pypi.python.org/pypi/colorama
-
-Glossary
-********
-
-.. glossary::
-      
-   clui
-      A clui is an abbreviation for Command Line User Interface
-
-Indices and tables
-*******************
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-.. _regex: http://www.regular-expressions.info/quickstart.html
+   additional

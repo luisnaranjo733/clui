@@ -16,11 +16,27 @@ def exit_function():
 def exit2():
     print "Tearing down stuff..."
     
-def my_condition_test(user_input,looped):
-    if user_input == 'dick':
-        return False
-    return True
+def my_condition_test(user_input,looped): #TODO: Move this docstring into actual documentation
+    """A test function for a clui.
+    
+1) **Must** take *two* positional arguments.
 
+   The first positional argument is the last string that the user entered.
+   
+   The second positional argument is an integer representation of the number
+   of loops the clui has gone through.
+      
+2) **Must** return a *boolean*.
+
+   You can return a single boolean.
+   
+   You can also return a tuple or list, with the boolean being listed first.
+   Everything listed after that boolean, will be printed to the screen.
+"""
+    if looped > 2:
+        return (False,'test failed')
+    return (True,'Test passed')
+    
 ui = base_clui() #Create an instance of the base_clui class
 
 #Here we define the interface's global attributes
@@ -34,18 +50,13 @@ ui.exit_message = 'Thank you for using flashcards! Bye!' #Optional
 #ui.display_all_regex = True #Defaults to False
 ui.display_exit_words = True #Defaults to False
 ui.exit_callables = [exit_function,exit2] 
-ui.input_message = ': ' #Defaults to '> '
+ui.input_message = '> ' #Defaults to '> '
 ui.condition_tests = [my_condition_test] #Defaults to empty list
 
 #Here we add 'options' to the menu interface.
 #Each menu option can over-ride the global attributes. #TODO: Implement this
 #------------------------------------------------------------------------------
-"""
-        callables = kwargs.pop('callables',None)
-        patterns = kwargs.pop('patterns',None)
-        display_name = kwargs.pop('display_name',None)
-        display_callables = kwargs.pop('display_callables',False)
-        display_regex = kwargs.pop('display_regex',False)"""
+ 
         
 ui.add(
     callables=[delete_flashcards,will_not_be_named], #These will be called when this menu's patterns are matched.
@@ -57,8 +68,8 @@ ui.add(
 
 ui.add(
     callables=[add_flashcards],
+    patterns = ['^add *(more|some)? *flashcards$',],
     display_name='Add some flashcards!',
-    patterns = ['^add *(some *flashcards)?$']
 )
 
-ui.execute()
+ui.execute() #Enter mainloop

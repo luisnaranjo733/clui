@@ -270,7 +270,17 @@ It will enter a loop, and it will break in only three scenarios:
 
             if self.condition_tests: #user defined tests
                 for condition_test in self.condition_tests:
-                    self.condition = condition_test(user_input,self.looped)
+                    result = condition_test(user_input,self.looped)
+                    try:
+                        self.condition = result[0] #will work if a list or tuple is returned
+                    except:
+                        self.condition = result #If a string or bool is returned
+                    
+                    if (type(result) == list or type(result) == tuple) and len(result) > 1: #if the list is a tuple/list, and has more than one item (has a message).
+                        if result[0]: color = Fore.CYAN #if true (test passed)
+                        if not result[0]: color = Fore.RED# if false (test failed)
+                        print color + '\n'.join(result[1:]) + Fore.RESET
+                            
                     if not self.condition:
                         print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL #FIXME: This is copy and paste from the __chexit__ method.
                                                                                                          #For some reason this was double printing when I ran chexit
