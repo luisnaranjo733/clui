@@ -141,6 +141,7 @@ class base_clui(object):
                     if self.exit_message:
                         print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL
 
+
     def __clear__(self):
         if platform == 'win32':
             command = 'cls'
@@ -159,19 +160,15 @@ class base_clui(object):
         callables (positional)
             This is a **list** of callable functions/classes that clui will execute
             for that menu option (in the order that they were defined).
-            **These callables *will not* take any positional parameters**.
+            **These callables do not take any positional parameters at this time**.
 
         patterns (defaults to the name of the first callable)
             A **list** of regex strings that clui will use to match to user input (in order).
-            If a match is found, the corresponding callable will executed.
+            If a match is found, the corresponding callables will executed.
 
         display_name (defaults to the name of the first callable)
             This is the **string** that will actually be displayed to the user for
             this option in the menu.
-
-        synopsis (defaults to None)
-            This is a brief summation of what each command does, it is shown to
-            the right of its' corresponding command.
 
         display_callables (defaults to False)
             This boolean defines controls whether or not an additional list of callables is
@@ -180,7 +177,6 @@ class base_clui(object):
         callables = kwargs.pop('callables',None)
         patterns = kwargs.pop('patterns',None)
         display_name = kwargs.pop('display_name',None)
-        synopsis = kwargs.pop('synopsis',None)
         display_callables = kwargs.pop('display_callables',False)
         display_regex = kwargs.pop('display_regex',False)
 
@@ -207,7 +203,6 @@ class base_clui(object):
         option = {'callables':callables,
         'display_name':display_name,
         'patterns':patterns,
-        'synopsis':synopsis,
         'display_callables':display_callables,
         'display_regex':display_regex,
         'index':index}
@@ -245,6 +240,7 @@ class base_clui(object):
 
             if (user_input == 'clear' or user_input == 'cls') and self.enable_clear:
                 self.__clear__() #makes os call to clear the screen
+
                 
             if self.condition_tests: #user defined tests
                 for condition_test in self.condition_tests:
@@ -255,6 +251,7 @@ class base_clui(object):
 
             print '' #Buffer line
             
+
             for patterns,callables in self.__patterns__(): #checking menu option patterns
                 for pattern in patterns:
                     match = re.search(pattern,user_input)
@@ -264,5 +261,5 @@ class base_clui(object):
                         self.__call__(callables)
             
             self.__chexit__(user_input) #Check for exit words
-            
+
 deinit() #required for x-platform support by colorama
