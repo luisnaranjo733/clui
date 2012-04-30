@@ -52,8 +52,8 @@ ui.condition_tests = [my_condition_test] #Defaults to empty list
 ui.add(
     callables=[delete_flashcards,will_not_be_named], #These will be called when this menu's patterns are matched.
     patterns=[ #These are regular expressions. clui will try to match them to your user's input.
-        '[Rr]emove flashcards',
-        '[Dd]elete flashcards!?'
+        '^[Rr]emove flashcards$',
+        '^[Dd]elete flashcards!?$'
     ],
     display_name = 'Delete some flashcards from your set', #What your users will see as the name of this option
 ) 

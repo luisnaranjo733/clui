@@ -123,17 +123,11 @@ enable_clear (**boolean**):
                 line +=  '\tCallables: ' +Fore.CYAN + str(callables)+ Fore.RESET 
 
             if option['display_regex'] or self.display_all_regex:
+                #option['patterns'].append(option['display_name'])
                 line += '\tPatterns: ' + Fore.CYAN + str(option['patterns']) + Fore.RESET
             line += "\n"
 
         return line
-
-    def __patterns__(self):
-
-        for option in self.menu:
-            patterns = option['patterns']#.append(self.menu.index(option)) #Deprecated? Moved this into the initial add method.
-            callables = option['callables']
-            yield(patterns,callables)
 
     def __call__(self,callables): #callables is a list of callables. Who would've guessed?
         buff = '-'*72
@@ -208,16 +202,17 @@ display_regex (bool - defaults to False)
             display_name = backup_name
 
         if not patterns:
-            patterns = [backup_name]
+            patterns = ['^'+backup_name+'$']
 
         if self.start_with_zero:
             offset = 0
 
         if not self.start_with_zero:
             offset = 1
-
-        patterns.append(str(len(self.menu)+offset)) # +1 to start menu with zero
+            
         index = len(self.menu)+offset # +1 to start menu with zero
+        patterns.append('^'+str(index)+'$') # To make it regex-y
+
 
         option = {'callables':callables,
         'display_name':display_name,
@@ -256,6 +251,10 @@ It will enter a loop, and it will break in only three scenarios:
         if self.display_exit_words:
             print "Enter one of the following words to escape: " + Fore.RED + str(self.exit_words) + Fore.RESET
             print ''
+            
+        for option in self.menu:
+            display_name = option['display_name']
+            option['patterns'].append('^'+display_name+'$')
 
         while self.condition:
             self.looped += 1
@@ -278,12 +277,13 @@ It will enter a loop, and it will break in only three scenarios:
             print '' #Buffer line
             
 
-            for patterns,callables in self.__patterns__(): #checking menu option patterns
-                for pattern in patterns:
+
+            for option in self.menu: #checking menu option patterns
+                for pattern in option['patterns']:
                     match = re.search(pattern,user_input)
 
                     if match:
-                        self.__call__(callables)
+                        self.__call__(option['callables'])
             
             self.__chexit__(user_input) #Check for exit words
 
