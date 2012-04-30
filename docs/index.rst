@@ -1,10 +1,10 @@
-CLUI - Command Line User Interface
-**********************************
+C.ommand L.ine U.ser I.nterface
+******************************************
 
 .. toctree::
    :maxdepth: 2
 
-**An open source python object-ooriented API for creating command line user interfaces on the fly.**
+**Cross platform command line user interfaces generated on the fly.**
    Created by *Luis Naranjo Gomez*
 
 Installation
@@ -14,19 +14,8 @@ As *always*, you should use to pip to install.
 
 >>> pip install clui
 
-Usage
-=====
-
-.. automodule:: clui
-   :members:
-   :platform: Linux, Mac, Windows
-   :synopsis: An open source python object-ooriented API for creating command line user interfaces on the fly.
-
-
-
-
-Example Code
-============
+Example Usage
+=============
 
 >>> from clui import base_clui
 >>> 
@@ -68,16 +57,35 @@ Example Code
 Example Output
 ===============
 
-This is what the CLUI might look like!
+This is what the :term:`clui` might look like!
 
 .. image:: sample_output.png
+
+Customization
+=============
+
+.. automodule:: clui
+   :members:
+   :platform: Linux, Mac, Windows
+   :synopsis: An open source python object-ooriented API for creating command line user interfaces on the fly.
+
 
 Dependencies
 ============
 
-`colorama`_
+clui depends on `colorama`_ for coloring text.
+
+This is the only dependency other than the standard python library.
 
 .. _colorama: http://pypi.python.org/pypi/colorama
+
+Glossary
+========
+
+.. glossary::
+      
+   clui
+      A clui is an abbreviation for Command Line User Interface
 
 Indices and tables
 *******************
@@ -85,4 +93,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

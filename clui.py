@@ -26,13 +26,7 @@ function.func_name for classes?
 customize colors in colorama
 
 recursive message?
-
-clean up execute method, contain it's contents so users can replace the
-execute method
-
-__doc__ method in class?
-
-rename base_clui.condition to base_clui.__condition__
+s
 """
 
 
@@ -44,14 +38,14 @@ class base_clui(object):
 
     Kwargs:
 
-      title (str): The title of your clui
+      title (str): The title of your :term:`clui`
 
       initial_message (str):  Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)
 
       exit_words (list): A list of regex strings. It matches the user's input to these and exits the programs if it finds a match.
         The **defaults** are ['^end$','^exit$','^leave$','^bye'$]
 
-      exit_message (str): This is the message that clui displays when the user exits the interface.
+      exit_message (str): This is the message that :term:`clui` displays when the user exits the interface.
 
       start_with_zero (bool): This controls the index values of the 
 
@@ -60,7 +54,7 @@ class base_clui(object):
     def __init__(self,**kwargs):
         """The menu attribute is key here. All the 'add' method really does
         is add dictionaries to the options method, which are used to
-        generate the clui."""
+        generate the :term:`clui`."""
 
         self.title = kwargs.pop('title', None)
         self.initial_message = kwargs.pop('initial_message', None)
@@ -152,18 +146,17 @@ class base_clui(object):
 
     def add(self,**kwargs):
         """
-        This method adds commands to the self.menu list, which is used to gen
-        erate the clui.
-
+        This method adds menu options to the menu.
+        
         It has the following parameters:
 
         callables (positional)
-            This is a **list** of callable functions/classes that clui will execute
+            This is a **list** of callable functions/classes that :term:`clui` will execute
             for that menu option (in the order that they were defined).
             **These callables do not take any positional parameters at this time**.
 
         patterns (defaults to the name of the first callable)
-            A **list** of regex strings that clui will use to match to user input (in order).
+            A **list** of regex strings that :term:`clui` will use to match to user input (in order).
             If a match is found, the corresponding callables will executed.
 
         display_name (defaults to the name of the first callable)
@@ -173,6 +166,9 @@ class base_clui(object):
         display_callables (defaults to False)
             This boolean defines controls whether or not an additional list of callables is
             added for *each* menu option.
+            
+        display_regex (bool - defaults to False)
+            This toggles the display of the list of regex strings that correspond to each menu option.
         """
         callables = kwargs.pop('callables',None)
         patterns = kwargs.pop('patterns',None)
@@ -211,7 +207,7 @@ class base_clui(object):
 
     def execute(self): #Playing with the idea of uesr defined while loop conditions, and callable tests for said conditions
         """
-        This is the mainloop of the clui. Only hit this after you have added all
+        This is the mainloop of the :term:`clui`. Only hit this after you have added all
         of the options for your menu, because it will enter a loop, and it won't exit
         until the user's input is in the exit_words list (defined in __init__).
         """
@@ -257,7 +253,6 @@ class base_clui(object):
                     match = re.search(pattern,user_input)
 
                     if match:
-                        print "SELECTING %s..." % user_input
                         self.__call__(callables)
             
             self.__chexit__(user_input) #Check for exit words

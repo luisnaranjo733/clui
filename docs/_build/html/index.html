@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>CLUI - Command Line User Interface &mdash; clui 1.0 documentation</title>
+    <title>C.ommand L.ine U.ser I.nterface &mdash; clui 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -46,14 +46,14 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="clui-command-line-user-interface">
-<h1>CLUI - Command Line User Interface<a class="headerlink" href="#clui-command-line-user-interface" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="c-ommand-l-ine-u-ser-i-nterface">
+<h1>C.ommand L.ine U.ser I.nterface<a class="headerlink" href="#c-ommand-l-ine-u-ser-i-nterface" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul class="simple">
 </ul>
 </div>
 <dl class="docutils">
-<dt><strong>An open source python object-ooriented API for creating command line user interfaces on the fly.</strong></dt>
+<dt><strong>Cross platform command line user interfaces generated on the fly.</strong></dt>
 <dd>Created by <em>Luis Naranjo Gomez</em></dd>
 </dl>
 <div class="section" id="installation">
@@ -63,64 +63,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="module-clui">
-<span id="usage"></span><h2>Usage<a class="headerlink" href="#module-clui" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="clui.base_clui">
-<em class="property">class </em><tt class="descclassname">clui.</tt><tt class="descname">base_clui</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the base class for a command line user interface.
-You can control the style of the interface with the attributes
-provided in this class. <em>All attributes are optional</em>.</p>
-<p>Kwargs:</p>
-<blockquote>
-<div><p>title (str): The title of your clui</p>
-<p>initial_message (str):  Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)</p>
-<dl class="docutils">
-<dt>exit_words (list): A list of regex strings. It matches the user&#8217;s input to these and exits the programs if it finds a match.</dt>
-<dd>The <strong>defaults</strong> are [&#8216;^end$&#8217;,&#8217;^exit$&#8217;,&#8217;^leave$&#8217;,&#8217;^bye&#8217;$]</dd>
-</dl>
-<p>exit_message (str): This is the message that clui displays when the user exits the interface.</p>
-<p>start_with_zero (bool): This controls the index values of the</p>
-</div></blockquote>
-<dl class="method">
-<dt id="clui.base_clui.add">
-<tt class="descname">add</tt><big>(</big><em>callables</em>, <em>patterns=None</em>, <em>display_name=None</em>, <em>synopsis=None</em>, <em>display_callables=False</em>, <em>display_regex=False</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.add" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method adds commands to the self.menu list, which is used to gen
-erate the clui.</p>
-<p>It has the following parameters:</p>
-<dl class="docutils">
-<dt>callables (positional)</dt>
-<dd>This is a <strong>list</strong> of callable functions/classes that clui will execute
-for that menu option (in the order that they were defined).
-<strong>These callables *will not* take any positional parameters</strong>.</dd>
-<dt>patterns (defaults to the name of the first callable)</dt>
-<dd>A <strong>list</strong> of regex strings that clui will use to match to user input (in order).
-If a match is found, the corresponding callable will executed.</dd>
-<dt>display_name (defaults to the name of the first callable)</dt>
-<dd>This is the <strong>string</strong> that will actually be displayed to the user for
-this option in the menu.</dd>
-<dt>synopsis (defaults to None)</dt>
-<dd>This is a brief summation of what each command does, it is shown to
-the right of its&#8217; corresponding command.</dd>
-<dt>display_callables (defaults to False)</dt>
-<dd>This boolean defines controls whether or not an additional list of callables is
-added for <em>each</em> menu option.</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="clui.base_clui.execute">
-<tt class="descname">execute</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.execute" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the mainloop of the clui. Only hit this after you have added all
-of the options for your menu, because it will enter a loop, and it won&#8217;t exit
-until the user&#8217;s input is in the exit_words list (defined in __init__).</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="example-code">
-<h2>Example Code<a class="headerlink" href="#example-code" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">clui</span> <span class="kn">import</span> <span class="n">base_clui</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">add_flashcards</span><span class="p">():</span>
@@ -162,12 +106,74 @@ until the user&#8217;s input is in the exit_words list (defined in __init__).</p
 </div>
 <div class="section" id="example-output">
 <h2>Example Output<a class="headerlink" href="#example-output" title="Permalink to this headline">¶</a></h2>
-<p>This is what the CLUI might look like!</p>
+<p>This is what the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> might look like!</p>
 <img alt="sample_output.png" src="sample_output.png" />
+</div>
+<div class="section" id="module-clui">
+<span id="customization"></span><h2>Customization<a class="headerlink" href="#module-clui" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="clui.base_clui">
+<em class="property">class </em><tt class="descclassname">clui.</tt><tt class="descname">base_clui</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the base class for a command line user interface.
+You can control the style of the interface with the attributes
+provided in this class. <em>All attributes are optional</em>.</p>
+<p>Kwargs:</p>
+<blockquote>
+<div><p>title (str): The title of your <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a></p>
+<p>initial_message (str):  Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)</p>
+<dl class="docutils">
+<dt>exit_words (list): A list of regex strings. It matches the user&#8217;s input to these and exits the programs if it finds a match.</dt>
+<dd>The <strong>defaults</strong> are [&#8216;^end$&#8217;,&#8217;^exit$&#8217;,&#8217;^leave$&#8217;,&#8217;^bye&#8217;$]</dd>
+</dl>
+<p>exit_message (str): This is the message that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> displays when the user exits the interface.</p>
+<p>start_with_zero (bool): This controls the index values of the</p>
+</div></blockquote>
+<dl class="method">
+<dt id="clui.base_clui.add">
+<tt class="descname">add</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method adds menu options to the menu.</p>
+<p>It has the following parameters:</p>
+<dl class="docutils">
+<dt>callables (positional)</dt>
+<dd>This is a <strong>list</strong> of callable functions/classes that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> will execute
+for that menu option (in the order that they were defined).
+<strong>These callables do not take any positional parameters at this time</strong>.</dd>
+<dt>patterns (defaults to the name of the first callable)</dt>
+<dd>A <strong>list</strong> of regex strings that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> will use to match to user input (in order).
+If a match is found, the corresponding callables will executed.</dd>
+<dt>display_name (defaults to the name of the first callable)</dt>
+<dd>This is the <strong>string</strong> that will actually be displayed to the user for
+this option in the menu.</dd>
+<dt>display_callables (defaults to False)</dt>
+<dd>This boolean defines controls whether or not an additional list of callables is
+added for <em>each</em> menu option.</dd>
+<dt>display_regex (bool - defaults to False)</dt>
+<dd>This toggles the display of the list of regex strings that correspond to each menu option.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="clui.base_clui.execute">
+<tt class="descname">execute</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the mainloop of the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a>. Only hit this after you have added all
+of the options for your menu, because it will enter a loop, and it won&#8217;t exit
+until the user&#8217;s input is in the exit_words list (defined in __init__).</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://pypi.python.org/pypi/colorama">colorama</a></p>
+<p>clui depends on <a class="reference external" href="http://pypi.python.org/pypi/colorama">colorama</a> for coloring text.</p>
+<p>This is the only dependency other than the standard python library.</p>
+</div>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-clui">clui</dt>
+<dd>A clui is an abbreviation for Command Line User Interface</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -187,12 +193,13 @@ until the user&#8217;s input is in the exit_words list (defined in __init__).</p
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">CLUI - Command Line User Interface</a><ul>
+<li><a class="reference internal" href="#">C.ommand L.ine U.ser I.nterface</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#module-clui">Usage</a></li>
-<li><a class="reference internal" href="#example-code">Example Code</a></li>
+<li><a class="reference internal" href="#example-usage">Example Usage</a></li>
 <li><a class="reference internal" href="#example-output">Example Output</a></li>
+<li><a class="reference internal" href="#module-clui">Customization</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#glossary">Glossary</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
