@@ -96,7 +96,8 @@ class base_clui(object):
                     try:
                         callable_name = function.func_name #Only works for functions
                     except AttributeError:
-                        callable_name = str(function) #This will probably happen to classes
+                        tempclass = function()
+                        callable_name = tempclass.__class__.__name__ #This will probably happen to classes
                     callables.append(callable_name)
                     #callables.append(str(function))
                     #line += '{callable_name}'.format(callable_name=callable_name)

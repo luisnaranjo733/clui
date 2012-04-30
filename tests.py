@@ -9,7 +9,6 @@ def delete_flashcards():
     print "Done!"
 
 class will_not_be_named(object):
-    func_name = 'dick' #if you don't want to see <class '__main__.will_not_be_named'>
     def __init__(self):
         print "This function will not be the name of added menu option, because it was not added first."
 
