@@ -1,19 +1,15 @@
 C.ommand L.ine U.ser I.nterface
 ******************************************
 
-.. toctree::
-   :maxdepth: 2
-
 **Cross platform command line user interfaces generated on the fly.**
    Created by *Luis Naranjo Gomez*
-
-Installation
-============
-
-As *always*, you should use to pip to install.
-
->>> pip install clui
-
+   
+.. toctree::
+   :maxdepth: 2
+   
+   installation
+   depth
+   
 Example Usage
 =============
 
@@ -63,17 +59,9 @@ This is what the :term:`clui` might look like!
 
 .. _customization:
 
-Customization
-=============
-
-.. automodule:: clui
-   :members:
-   :platform: Linux, Mac, Windows
-   :synopsis: An open source python object-ooriented API for creating command line user interfaces on the fly.
-
 
 Dependencies
-============
+************
 
 clui depends on `colorama`_ for coloring text.
 
@@ -82,7 +70,7 @@ This is the only dependency other than the standard python library.
 .. _colorama: http://pypi.python.org/pypi/colorama
 
 Glossary
-========
+********
 
 .. glossary::
       

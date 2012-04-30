@@ -25,7 +25,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="clui 1.0 documentation" href="#" /> 
+    <link rel="top" title="clui 1.0 documentation" href="#" />
+    <link rel="next" title="Installation" href="installation.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,8 +36,8 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
+          <a href="installation.html" title="Installation"
+             accesskey="N">next</a> |</li>
         <li><a href="#">clui 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -48,20 +49,15 @@
             
   <div class="section" id="c-ommand-l-ine-u-ser-i-nterface">
 <h1>C.ommand L.ine U.ser I.nterface<a class="headerlink" href="#c-ommand-l-ine-u-ser-i-nterface" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul class="simple">
-</ul>
-</div>
 <dl class="docutils">
 <dt><strong>Cross platform command line user interfaces generated on the fly.</strong></dt>
 <dd>Created by <em>Luis Naranjo Gomez</em></dd>
 </dl>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>As <em>always</em>, you should use to pip to install.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">clui</span>
-</pre></div>
-</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="depth.html">Let&#8217;s go a little more in depth</a></li>
+</ul>
 </div>
 <div class="section" id="example-usage">
 <h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
@@ -109,91 +105,18 @@
 <p>This is what the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> might look like!</p>
 <img alt="sample_output.png" src="sample_output.png" />
 </div>
-<div class="section" id="customization">
-<span id="id1"></span><h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-clui"></span><dl class="class">
-<dt id="clui.base_clui">
-<em class="property">class </em><tt class="descclassname">clui.</tt><tt class="descname">base_clui</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the base class for a command line user interface.</p>
-<p>You can control the style of the interface with the attributes <strong>AND OR</strong> parameters
-provided in this class. <em>All are optional.</em> Some more than others.</p>
-<dl class="docutils">
-<dt>title (<strong>string</strong>):</dt>
-<dd>The title of your <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a></dd>
-<dt>initial_message (<strong>string</strong>):</dt>
-<dd>Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)</dd>
-<dt>exit_words (<strong>list</strong>):</dt>
-<dd><p class="first">A list of <a class="reference external" href="http://www.regular-expressions.info/quickstart.html">regex</a> strings. It matches the user&#8217;s input to these and exits the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> if it finds a match.</p>
-<p class="last">The <strong>defaults</strong> are [&#8216;^end$&#8217;,&#8217;^exit$&#8217;,&#8217;^leave$&#8217;,&#8217;^bye&#8217;$]</p>
-</dd>
-<dt>exit_message (<strong>string</strong>):</dt>
-<dd>This is the message that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> displays when the user exits the interface.</dd>
-<dt>start_with_zero (<strong>boolean</strong>):</dt>
-<dd><p class="first">This toggles the start of the menu&#8217;s index between 0 and 1.</p>
-<p class="last">This affects the menu options&#8217; pattern as well.</p>
-</dd>
-<dt>display_all_callables (<strong>boolean</strong>):</dt>
-<dd>If activated, a string representation of the list which contains the callables for each menu option will be displayed.</dd>
-</dl>
-<p>display_all_regex (<strong>boolean</strong>):</p>
-<p>display_exit_words (<strong>boolean</strong>):</p>
-<p>exit_callables (<strong>list</strong>):</p>
-<p>input_message (<strong>string</strong>):</p>
-<p>condition (<strong>BOOLEAN</strong>):</p>
-<p>condition_tests (<strong>list of callables</strong>):</p>
-<p>enable_clear (<strong>boolean</strong>):</p>
-<dl class="method">
-<dt id="clui.base_clui.add">
-<tt class="descname">add</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.add" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method adds menu options to the menu.</p>
-<p>It has the following parameters:</p>
-<dl class="docutils">
-<dt>callables (positional)</dt>
-<dd>This is a <strong>list</strong> of callable functions/classes that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> will execute
-for that menu option (in the order that they were defined).
-These callables <strong>do not take any positional parameters</strong> at this time.</dd>
-<dt>patterns (defaults to the name of the first callable)</dt>
-<dd>A <strong>list</strong> of regex strings that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> will use to match to user input (in order).
-If a match is found, the corresponding callables will executed.</dd>
-<dt>display_name (defaults to the name of the first callable)</dt>
-<dd>This is the <strong>string</strong> that will actually be displayed to the user for
-this option in the menu.</dd>
-<dt>display_callables (defaults to False)</dt>
-<dd>This boolean defines controls whether or not an additional list of callables is
-added for <em>each</em> menu option.</dd>
-<dt>display_regex (bool - defaults to False)</dt>
-<dd>This toggles the display of the list of regex strings that correspond to each menu option.</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="clui.base_clui.execute">
-<tt class="descname">execute</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.execute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mainloop of the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a>.</p>
-<p>Only hit this after you have added all of the options for your menu.
-It will enter a loop, and it will break in only three scenarios:</p>
-<ol class="arabic simple">
-<li>The user&#8217;s input matches one of the <a class="reference internal" href="#customization"><em>exit words</em></a> patterns.</li>
-<li>One of the user defined <a class="reference internal" href="#customization"><em>condition tests</em></a> returns False</li>
-<li>The user exists the terminal/shell</li>
-</ol>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<span id="customization"></span><h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
 <p>clui depends on <a class="reference external" href="http://pypi.python.org/pypi/colorama">colorama</a> for coloring text.</p>
 <p>This is the only dependency other than the standard python library.</p>
 </div>
 <div class="section" id="glossary">
-<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
 <dl class="glossary docutils">
 <dt id="term-clui">clui</dt>
 <dd>A clui is an abbreviation for Command Line User Interface</dd>
 </dl>
-</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -213,17 +136,18 @@ It will enter a loop, and it will break in only three scenarios:</p>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">C.ommand L.ine U.ser I.nterface</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#example-usage">Example Usage</a></li>
 <li><a class="reference internal" href="#example-output">Example Output</a></li>
-<li><a class="reference internal" href="#customization">Customization</a></li>
-<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li><a class="reference internal" href="#glossary">Glossary</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#glossary">Glossary</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="next chapter">Installation</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -253,8 +177,8 @@ It will enter a loop, and it will break in only three scenarios:</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
+          <a href="installation.html" title="Installation"
+             >next</a> |</li>
         <li><a href="#">clui 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>

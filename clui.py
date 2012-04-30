@@ -59,6 +59,7 @@ display_all_callables (**boolean**):
    If activated, a string representation of the list which contains the callables for each menu option will be displayed.
    
 display_all_regex (**boolean**):
+    
 
 display_exit_words (**boolean**):
 
