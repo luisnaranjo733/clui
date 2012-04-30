@@ -10,7 +10,7 @@ def delete_flashcards():
 
 class will_not_be_named(object):
     def __init__(self):
-        print "This function will not be the name of added menu option, because it was not added first."
+        print "This class will not be the name of added menu option, because it was not added first."
 
 def exit_function():
     print "I am doing stuff that should be done when the program exits!"
@@ -33,7 +33,7 @@ ui.exit_words.append('^(goose|geese)$')
 ui.exit_message = 'Thank you for using flashcards! Bye!' #Optional
 ui.start_with_zero = True #Defaults to False
 #ui.display_all_callables = True #Defaults to False
-#ui.display_all_regex = True #Defaults to False
+ui.display_all_regex = True #Defaults to False
 #ui.display_exit_words = True #Defaults to False
 ui.exit_callables = [exit_function,exit2] 
 ui.input_message = ': ' #Defaults to '> '
@@ -50,13 +50,12 @@ ui.condition_tests = [my_condition_test] #Defaults to empty list
         display_regex = kwargs.pop('display_regex',False)"""
         
 ui.add(
-    callables=[delete_flashcards,will_not_be_named],
-    patterns=[
+    callables=[delete_flashcards,will_not_be_named], #These will be called when this menu's patterns are matched.
+    patterns=[ #These are regular expressions. clui will try to match them to your user's input.
         '[Rr]emove flashcards',
         '[Dd]elete flashcards!?'
     ],
-    display_callables = False,
-    display_name = 'Delete some flashcards from your set',
+    display_name = 'Delete some flashcards from your set', #What your users will see as the name of this option
 ) 
 
 ui.add(

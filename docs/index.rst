@@ -13,6 +13,8 @@ C.ommand L.ine U.ser I.nterface
 Example Usage
 =============
 
+TOBEREMOVED
+
 >>> from clui import base_clui
 >>> 
 >>> def add_flashcards():
@@ -25,30 +27,14 @@ Example Usage
 ... 
 >>> class will_not_be_named(object):
 ...     def __init__(self):
-...         print "This function will not be the name of added menu option, because it was not added first."
+...         print "This class will not be the name of added menu option, because it was not added first."
 ... 
 >>> ui = base_clui(
 ...     title = 'Flashcards',
 ...     initial_message = 'Flashcards is a python utility designed to help you know your stuff!',
 ...     exit_message = 'Bye! I hope you enjoyed your stay.',
 ... )
->>> ui.exit_words.append('idgaf')
->>> ui.add(
-...     callables=[delete_flashcards,will_not_be_named],
-...     patterns=[
-...         '[Rr]emove flashcards',
-...         '[Dd]elete flashcards!?'
-...     ],
-...     #display_callables = True,
-... ) 
->>> 
->>> ui.add(
-...     callables=[add_flashcards],
-...     patterns=['[Aa]dd flashcards','add'],
-...     display_name='Add some flashcards!',
-...     #display_callables = True,
-... )
->>> 
+
 
 Example Output
 ===============

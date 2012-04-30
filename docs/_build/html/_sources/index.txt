@@ -13,6 +13,8 @@ C.ommand L.ine U.ser I.nterface
 Example Usage
 =============
 
+TOBEREMOVED
+
 >>> from clui import base_clui
 >>> 
 >>> def add_flashcards():
@@ -25,7 +27,7 @@ Example Usage
 ... 
 >>> class will_not_be_named(object):
 ...     def __init__(self):
-...         print "This function will not be the name of added menu option, because it was not added first."
+...         print "This class will not be the name of added menu option, because it was not added first."
 ... 
 >>> ui = base_clui(
 ...     title = 'Flashcards',
