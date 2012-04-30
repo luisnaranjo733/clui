@@ -35,6 +35,7 @@ __doc__ method in class?
 rename base_clui.condition to base_clui.__condition__
 """
 
+
 class base_clui(object):
     """
     This is the base class for a command line user interface.
@@ -89,7 +90,7 @@ class base_clui(object):
             line += "{index}: {display_name}".format(index=option['index'],display_name=colored)
 
             if option['display_callables'] or self.display_all_callables: #
-
+            
                 callables = []
 
                 for function in option['callables']:
@@ -238,7 +239,7 @@ class base_clui(object):
         while self.condition:
             self.looped += 1
 
-            print '*'*72+"\n"
+            #print '*'*72+"\n"
             print self.__menu__() #gen menu as string
             user_input = raw_input(self.input_message)
 
