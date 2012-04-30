@@ -64,7 +64,7 @@ class base_clui(object):
 
         self.title = kwargs.pop('title', None)
         self.initial_message = kwargs.pop('initial_message', None)
-        self.exit_words = kwargs.pop('exit_words', '^end$ ^exit$ ^leave$ ^bye$'.split())
+        self.exit_words = kwargs.pop('exit_words', '^quit$ ^end$ ^exit$ ^leave$ ^bye$'.split())
         self.exit_message = kwargs.pop('exit_message', None)
         self.start_with_zero = kwargs.pop('start_with_zero',False)
         self.display_all_callables = kwargs.pop('display_all_callables',False)
@@ -74,6 +74,7 @@ class base_clui(object):
         self.input_message = kwargs.pop('input_message','> ')
         self.condition = kwargs.pop('condition',True)
         self.condition_tests = kwargs.pop('condition_tests',[])
+        self.enable_clear = kwargs.pop('enable_clear',False)
         self.menu = [] #List of options for the clui to use
         self.looped = 0 #Gets a +1 for each loop. In case tracking the amount of loops is ever important.
 
@@ -94,10 +95,9 @@ class base_clui(object):
 
                 for function in option['callables']:
                     try:
-                        callable_name = function.func_name #Only works for functions
+                        callable_name = function.func_name #Only works for functions, unless specified attribute of a class
                     except AttributeError:
-                        tempclass = function()
-                        callable_name = tempclass.__class__.__name__ #This will probably happen to classes
+                        callable_name = function().__class__.__name__ #This will probably happen to classes
                     callables.append(callable_name)
                     #callables.append(str(function))
                     #line += '{callable_name}'.format(callable_name=callable_name)
@@ -129,6 +129,25 @@ class base_clui(object):
                 print Fore.GREEN + "\tEXECUTING '%s'...\n" % callable_name + Fore.RESET
                 function()
                 print buff
+
+    def __chexit__(self,user_input,exit=False):
+            
+            for pattern in self.exit_words:#checking for exit words
+                match = re.search(pattern,user_input)
+                if match or exit:
+                    self.condition=False
+                    #to break it
+                    self.__call__(self.exit_callables)
+                    if self.exit_message:
+                        print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL
+
+    def __clear__(self):
+        if platform == 'win32':
+            command = 'cls'
+        if platform == 'linux2' or platform == 'darwin':
+            command = 'clear'
+            
+        subprocess.call(command)
 
     def add(self,**kwargs):
         """
@@ -224,6 +243,9 @@ class base_clui(object):
             print self.__menu__() #gen menu as string
             user_input = raw_input(self.input_message)
 
+            if (user_input == 'clear' or user_input == 'cls') and self.enable_clear:
+                self.__clear__() #makes os call to clear the screen
+                
             if self.condition_tests: #user defined tests
                 for condition_test in self.condition_tests:
                     self.condition = condition_test(user_input,self.looped)
@@ -241,15 +263,4 @@ class base_clui(object):
             
             self.__chexit__(user_input) #Check for exit words
             
-    def __chexit__(self,user_input,exit=False):
-            
-            for pattern in self.exit_words:#checking for exit words
-                match = re.search(pattern,user_input)
-                if match or exit:
-                    self.condition=False
-                    #to break it
-                    self.__call__(self.exit_callables)
-                    if self.exit_message:
-                        print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL
-
 deinit() #required for x-platform support by colorama
