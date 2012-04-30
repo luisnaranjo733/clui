@@ -2,11 +2,9 @@ from clui import base_clui
 
 def add_flashcards():
     print "Adding some flashcards..."
-    print "All done!"
 
 def delete_flashcards():
     print "Deleting all of the flashcards..."
-    print "Done!"
 
 class will_not_be_named(object):
     def __init__(self):
@@ -16,7 +14,7 @@ def exit_function():
     print "I am doing stuff that should be done when the program exits!"
 
 def exit2():
-    print "TEARDOWN"
+    print "Tearing down stuff..."
     
 def my_condition_test(user_input,looped):
     if user_input == 'dick':
@@ -31,10 +29,10 @@ ui.title = 'Flashcards'
 ui.initial_message = 'Welcome!'
 ui.exit_words.append('^(goose|geese)$')
 ui.exit_message = 'Thank you for using flashcards! Bye!' #Optional
-ui.start_with_zero = True #Defaults to False
+#ui.start_with_zero = True #Defaults to False
 #ui.display_all_callables = True #Defaults to False
-ui.display_all_regex = True #Defaults to False
-#ui.display_exit_words = True #Defaults to False
+#ui.display_all_regex = True #Defaults to False
+ui.display_exit_words = True #Defaults to False
 ui.exit_callables = [exit_function,exit2] 
 ui.input_message = ': ' #Defaults to '> '
 ui.condition_tests = [my_condition_test] #Defaults to empty list
@@ -52,8 +50,7 @@ ui.condition_tests = [my_condition_test] #Defaults to empty list
 ui.add(
     callables=[delete_flashcards,will_not_be_named], #These will be called when this menu's patterns are matched.
     patterns=[ #These are regular expressions. clui will try to match them to your user's input.
-        '^[Rr]emove flashcards$',
-        '^[Dd]elete flashcards!?$'
+        '^([Dd]elete|[Rr]emove)( *some)? *flashcards!?$'
     ],
     display_name = 'Delete some flashcards from your set', #What your users will see as the name of this option
 ) 
@@ -61,8 +58,7 @@ ui.add(
 ui.add(
     callables=[add_flashcards],
     display_name='Add some flashcards!',
-    display_regex = True,
-    display_callables = True
+    patterns = ['^add *(some *flashcards)?$']
 )
 
 ui.execute()

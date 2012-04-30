@@ -26,7 +26,8 @@ function.func_name for classes?
 customize colors in colorama
 
 recursive message?
-s
+
+DYNAMIC HELP COMMAND/FUNCTION
 """
 
 
@@ -249,7 +250,7 @@ It will enter a loop, and it will break in only three scenarios:
             print ''
 
         if self.display_exit_words:
-            print "Enter one of the following words to escape: " + Fore.RED + str(self.exit_words) + Fore.RESET
+            print "Match one of the following regex patterns to escape: " + Fore.RED + str(self.exit_words) + Fore.RESET
             print ''
             
         for option in self.menu:
@@ -265,8 +266,8 @@ It will enter a loop, and it will break in only three scenarios:
 
             if (user_input == 'clear' or user_input == 'cls') and self.enable_clear:
                 self.__clear__() #makes os call to clear the screen
-
                 
+
             if self.condition_tests: #user defined tests
                 for condition_test in self.condition_tests:
                     self.condition = condition_test(user_input,self.looped)
