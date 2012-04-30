@@ -22,7 +22,6 @@ Resolve dependency issues - what to do if colorama is unavailable?
 UPDATE DOCUMENTATION
     Minimalistic "Hello, World clui?" (3-4 lines)
 function.func_name for classes?
-figure out what the correct way of adding images to readthedocs is!
 
 customize colors in colorama
 
@@ -74,7 +73,7 @@ class base_clui(object):
         self.input_message = kwargs.pop('input_message','> ')
         self.condition = kwargs.pop('condition',True)
         self.condition_tests = kwargs.pop('condition_tests',[])
-        self.enable_clear = kwargs.pop('enable_clear',False)
+        self.enable_clear = kwargs.pop('enable_clear',True)
         self.menu = [] #List of options for the clui to use
         self.looped = 0 #Gets a +1 for each loop. In case tracking the amount of loops is ever important.
 
@@ -97,7 +96,7 @@ class base_clui(object):
                     try:
                         callable_name = function.func_name #Only works for functions, unless specified attribute of a class
                     except AttributeError:
-                        callable_name = function().__class__.__name__ #This will probably happen to classes
+                        callable_name = str(function) #This will probably happen to classes
                     callables.append(callable_name)
                     #callables.append(str(function))
                     #line += '{callable_name}'.format(callable_name=callable_name)
@@ -259,7 +258,9 @@ class base_clui(object):
                 for pattern in patterns:
                     match = re.search(pattern,user_input)
 
-                    if match: self.__call__(callables)
+                    if match:
+                        print "SELECTING %s..." % user_input
+                        self.__call__(callables)
             
             self.__chexit__(user_input) #Check for exit words
             
