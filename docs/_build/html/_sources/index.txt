@@ -61,6 +61,8 @@ This is what the :term:`clui` might look like!
 
 .. image:: sample_output.png
 
+.. _customization:
+
 Customization
 =============
 
@@ -93,3 +95,5 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. _regex: http://www.regular-expressions.info/quickstart.html

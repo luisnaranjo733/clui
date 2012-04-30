@@ -31,25 +31,48 @@ s
 
 
 class base_clui(object):
-    """
-    This is the base class for a command line user interface.
-    You can control the style of the interface with the attributes
-    provided in this class. *All attributes are optional*.
+    """This is the base class for a command line user interface.
+    
+You can control the style of the interface with the attributes **AND OR** parameters
+provided in this class. *All are optional.* Some more than others.
 
-    Kwargs:
+title (**string**):
+   The title of your :term:`clui`
 
-      title (str): The title of your :term:`clui`
+initial_message (**string**):
+   Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)
+ 
+exit_words (**list**):
+   A list of `regex`_ strings. It matches the user's input to these and exits the :term:`clui` if it finds a match.
+   
+   The **defaults** are ['^end$','^exit$','^leave$','^bye'$]
 
-      initial_message (str):  Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)
+exit_message (**string**):
+   This is the message that :term:`clui` displays when the user exits the interface.
 
-      exit_words (list): A list of regex strings. It matches the user's input to these and exits the programs if it finds a match.
-        The **defaults** are ['^end$','^exit$','^leave$','^bye'$]
+start_with_zero (**boolean**):
+   This toggles the start of the menu's index between 0 and 1.
+   
+   This affects the menu options' pattern as well.
+   
+display_all_callables (**boolean**):
+   If activated, a string representation of the list which contains the callables for each menu option will be displayed.
+   
+display_all_regex (**boolean**):
 
-      exit_message (str): This is the message that :term:`clui` displays when the user exits the interface.
+display_exit_words (**boolean**):
 
-      start_with_zero (bool): This controls the index values of the 
+exit_callables (**list**):
 
-    """
+input_message (**string**):
+
+condition (**BOOLEAN**):
+
+condition_tests (**list of callables**):
+
+enable_clear (**boolean**):
+
+"""
 
     def __init__(self,**kwargs):
         """The menu attribute is key here. All the 'add' method really does
@@ -145,30 +168,29 @@ class base_clui(object):
         subprocess.call(command)
 
     def add(self,**kwargs):
-        """
-        This method adds menu options to the menu.
+        """This method adds menu options to the menu.
         
-        It has the following parameters:
+It has the following parameters:
 
-        callables (positional)
-            This is a **list** of callable functions/classes that :term:`clui` will execute
-            for that menu option (in the order that they were defined).
-            **These callables do not take any positional parameters at this time**.
+callables (positional)
+   This is a **list** of callable functions/classes that :term:`clui` will execute
+   for that menu option (in the order that they were defined).
+   These callables **do not take any positional parameters** at this time.
 
-        patterns (defaults to the name of the first callable)
-            A **list** of regex strings that :term:`clui` will use to match to user input (in order).
-            If a match is found, the corresponding callables will executed.
+patterns (defaults to the name of the first callable)
+   A **list** of regex strings that :term:`clui` will use to match to user input (in order).
+   If a match is found, the corresponding callables will executed.
 
-        display_name (defaults to the name of the first callable)
-            This is the **string** that will actually be displayed to the user for
-            this option in the menu.
+display_name (defaults to the name of the first callable)
+   This is the **string** that will actually be displayed to the user for
+   this option in the menu.
 
-        display_callables (defaults to False)
-            This boolean defines controls whether or not an additional list of callables is
-            added for *each* menu option.
+display_callables (defaults to False)
+   This boolean defines controls whether or not an additional list of callables is
+   added for *each* menu option.
             
-        display_regex (bool - defaults to False)
-            This toggles the display of the list of regex strings that correspond to each menu option.
+display_regex (bool - defaults to False)
+   This toggles the display of the list of regex strings that correspond to each menu option.
         """
         callables = kwargs.pop('callables',None)
         patterns = kwargs.pop('patterns',None)
@@ -206,11 +228,18 @@ class base_clui(object):
         self.menu.append(option)
 
     def execute(self): #Playing with the idea of uesr defined while loop conditions, and callable tests for said conditions
-        """
-        This is the mainloop of the :term:`clui`. Only hit this after you have added all
-        of the options for your menu, because it will enter a loop, and it won't exit
-        until the user's input is in the exit_words list (defined in __init__).
-        """
+        """Mainloop of the :term:`clui`. 
+        
+Only hit this after you have added all of the options for your menu.
+It will enter a loop, and it will break in only three scenarios:
+
+1) The user's input matches one of the :ref:`exit words <customization>` patterns. 
+
+2) One of the user defined :ref:`condition tests <customization>` returns False
+
+3) The user exists the terminal/shell
+
+"""
         width = 70
 
         if self.title:

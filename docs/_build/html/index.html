@@ -109,25 +109,39 @@
 <p>This is what the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> might look like!</p>
 <img alt="sample_output.png" src="sample_output.png" />
 </div>
-<div class="section" id="module-clui">
-<span id="customization"></span><h2>Customization<a class="headerlink" href="#module-clui" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<div class="section" id="customization">
+<span id="id1"></span><h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-clui"></span><dl class="class">
 <dt id="clui.base_clui">
 <em class="property">class </em><tt class="descclassname">clui.</tt><tt class="descname">base_clui</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the base class for a command line user interface.
-You can control the style of the interface with the attributes
-provided in this class. <em>All attributes are optional</em>.</p>
-<p>Kwargs:</p>
-<blockquote>
-<div><p>title (str): The title of your <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a></p>
-<p>initial_message (str):  Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)</p>
+<dd><p>This is the base class for a command line user interface.</p>
+<p>You can control the style of the interface with the attributes <strong>AND OR</strong> parameters
+provided in this class. <em>All are optional.</em> Some more than others.</p>
 <dl class="docutils">
-<dt>exit_words (list): A list of regex strings. It matches the user&#8217;s input to these and exits the programs if it finds a match.</dt>
-<dd>The <strong>defaults</strong> are [&#8216;^end$&#8217;,&#8217;^exit$&#8217;,&#8217;^leave$&#8217;,&#8217;^bye&#8217;$]</dd>
+<dt>title (<strong>string</strong>):</dt>
+<dd>The title of your <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a></dd>
+<dt>initial_message (<strong>string</strong>):</dt>
+<dd>Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)</dd>
+<dt>exit_words (<strong>list</strong>):</dt>
+<dd><p class="first">A list of <a class="reference external" href="http://www.regular-expressions.info/quickstart.html">regex</a> strings. It matches the user&#8217;s input to these and exits the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> if it finds a match.</p>
+<p class="last">The <strong>defaults</strong> are [&#8216;^end$&#8217;,&#8217;^exit$&#8217;,&#8217;^leave$&#8217;,&#8217;^bye&#8217;$]</p>
+</dd>
+<dt>exit_message (<strong>string</strong>):</dt>
+<dd>This is the message that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> displays when the user exits the interface.</dd>
+<dt>start_with_zero (<strong>boolean</strong>):</dt>
+<dd><p class="first">This toggles the start of the menu&#8217;s index between 0 and 1.</p>
+<p class="last">This affects the menu options&#8217; pattern as well.</p>
+</dd>
+<dt>display_all_callables (<strong>boolean</strong>):</dt>
+<dd>If activated, a string representation of the list which contains the callables for each menu option will be displayed.</dd>
 </dl>
-<p>exit_message (str): This is the message that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> displays when the user exits the interface.</p>
-<p>start_with_zero (bool): This controls the index values of the</p>
-</div></blockquote>
+<p>display_all_regex (<strong>boolean</strong>):</p>
+<p>display_exit_words (<strong>boolean</strong>):</p>
+<p>exit_callables (<strong>list</strong>):</p>
+<p>input_message (<strong>string</strong>):</p>
+<p>condition (<strong>BOOLEAN</strong>):</p>
+<p>condition_tests (<strong>list of callables</strong>):</p>
+<p>enable_clear (<strong>boolean</strong>):</p>
 <dl class="method">
 <dt id="clui.base_clui.add">
 <tt class="descname">add</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.add" title="Permalink to this definition">¶</a></dt>
@@ -137,7 +151,7 @@ provided in this class. <em>All attributes are optional</em>.</p>
 <dt>callables (positional)</dt>
 <dd>This is a <strong>list</strong> of callable functions/classes that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> will execute
 for that menu option (in the order that they were defined).
-<strong>These callables do not take any positional parameters at this time</strong>.</dd>
+These callables <strong>do not take any positional parameters</strong> at this time.</dd>
 <dt>patterns (defaults to the name of the first callable)</dt>
 <dd>A <strong>list</strong> of regex strings that <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a> will use to match to user input (in order).
 If a match is found, the corresponding callables will executed.</dd>
@@ -155,9 +169,14 @@ added for <em>each</em> menu option.</dd>
 <dl class="method">
 <dt id="clui.base_clui.execute">
 <tt class="descname">execute</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/clui.html#base_clui.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#clui.base_clui.execute" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the mainloop of the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a>. Only hit this after you have added all
-of the options for your menu, because it will enter a loop, and it won&#8217;t exit
-until the user&#8217;s input is in the exit_words list (defined in __init__).</p>
+<dd><p>Mainloop of the <a class="reference internal" href="#term-clui"><em class="xref std std-term">clui</em></a>.</p>
+<p>Only hit this after you have added all of the options for your menu.
+It will enter a loop, and it will break in only three scenarios:</p>
+<ol class="arabic simple">
+<li>The user&#8217;s input matches one of the <a class="reference internal" href="#customization"><em>exit words</em></a> patterns.</li>
+<li>One of the user defined <a class="reference internal" href="#customization"><em>condition tests</em></a> returns False</li>
+<li>The user exists the terminal/shell</li>
+</ol>
 </dd></dl>
 
 </dd></dl>
@@ -197,7 +216,7 @@ until the user&#8217;s input is in the exit_words list (defined in __init__).</p
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#example-usage">Example Usage</a></li>
 <li><a class="reference internal" href="#example-output">Example Output</a></li>
-<li><a class="reference internal" href="#module-clui">Customization</a></li>
+<li><a class="reference internal" href="#customization">Customization</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li><a class="reference internal" href="#glossary">Glossary</a></li>
 </ul>
