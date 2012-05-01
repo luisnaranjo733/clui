@@ -108,10 +108,10 @@ enable_clear (**boolean**):
         is add dictionaries to the options method, which are used to
         generate the :term:`clui`."""
 
-        self.title = kwargs.pop('title', None)
-        self.initial_message = kwargs.pop('initial_message', None)
+        self.title = kwargs.pop('title', '')
+        self.initial_message = kwargs.pop('initial_message', '')
         self.exit_words = kwargs.pop('exit_words', '^quit$ ^end$ ^exit$ ^leave$ ^bye$'.split())
-        self.exit_message = kwargs.pop('exit_message', None)
+        self.exit_message = kwargs.pop('exit_message', '')
         self.start_with_zero = kwargs.pop('start_with_zero',False)
         self.display_all_callables = kwargs.pop('display_all_callables',False)
         self.display_all_regex = kwargs.pop('display_all_regex',False)

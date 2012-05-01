@@ -1,6 +1,16 @@
 Additional information
 ======================
 
+Platforms
+---------
+
+Supported platforms
+
+Issues
+------
+
+Bugs go here
+
 Dependencies
 ------------
 
