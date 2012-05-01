@@ -13,7 +13,32 @@
 import re
 import subprocess
 from sys import platform
-from colorama import Fore, Back, Style,init,deinit
+try:
+    from colorama import Fore, Back, Style,init,deinit
+    coloring = True
+except ImportError:
+    coloring = False
+
+class color(object): #TODO: Move this class elsewhere
+    "This class is used as backup to colorama"
+    def __init__(self):
+        default = ''
+        self.BLACK = default
+        self.RED = default
+        self.GREEN = default
+        self.YELLOW = default
+        self.BLUE = default
+        self.MAGENTA = default
+        self.CYAN = default
+        self.WHITE = default
+        self.RESET = default
+        self.DIM = default
+        self.NORMAL = default
+        self.BRIGHT = default
+        self.RESET_ALL = default
+if not coloring:
+    Fore = Back = Style = color()
+    init = deinit = color
 
 init() #required for x-platform support by colorama
 
@@ -28,6 +53,8 @@ customize colors in colorama
 recursive message?
 
 DYNAMIC HELP COMMAND/FUNCTION
+
+Remove colorama from requires list in setup.py?
 """
 
 
