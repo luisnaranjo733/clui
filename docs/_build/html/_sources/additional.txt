@@ -9,7 +9,7 @@ Supported platforms
 Bugs
 -----
 
-* When a user defined test returns False, the while loop breaks before hitting the exit message.
+* Blank bug 1
 
 Dependencies
 ------------
