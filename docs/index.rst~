@@ -1,18 +1,22 @@
-C.ommand L.ine U.ser I.nterface
-******************************************
+clui
+****
 
-.. image:: _static/logo/brushed.png
-
+.. image:: _static/logo/gold_white.png
 
 **Cross platform command line user interfaces generated on the fly.**
    Created by *Luis Naranjo Gomez*
 
-**UNDER DEVELOPMENT**
+**UNDER ACTIVE DEVELOPMENT**
 
 .. toctree::
    :maxdepth: 2
    
-   installation
    basic
    depth
    additional
+   installation
+
+
+
+   
+.. py:function:: Timer.repeat([repeat=3[, number=1000000]])

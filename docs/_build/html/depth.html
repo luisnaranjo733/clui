@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Let’s go a little more in depth &mdash; clui 1.0 documentation</title>
+    <title>Additional control &mdash; clui 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -51,8 +51,45 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="let-s-go-a-little-more-in-depth">
-<h1>Let&#8217;s go a little more in depth<a class="headerlink" href="#let-s-go-a-little-more-in-depth" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="additional-control">
+<h1>Additional control<a class="headerlink" href="#additional-control" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="condition-tests">
+<h2>Condition tests<a class="headerlink" href="#condition-tests" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><strong>Must</strong> take <em>two</em> positional arguments.</p>
+<p>The first positional argument is the last string that the user entered.</p>
+<p>The second positional argument is an integer representation of the number
+of loops the clui has gone through.</p>
+</li>
+<li><p class="first"><strong>Must</strong> return a <em>boolean</em>.</p>
+<p>You can return a single boolean.</p>
+<p><em>You can also return a tuple or list</em>, with the boolean being listed first.
+<em>Everything listed after that boolean</em>, will be printed to the screen</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">my_condition_test</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span><span class="n">looped</span><span class="p">):</span> <span class="c">#TODO: Move this docstring into actual documentation</span>
+    <span class="s">&quot;A test function for a clui.&quot;</span>
+
+    <span class="k">if</span> <span class="n">looped</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span><span class="s">&#39;test failed&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span><span class="s">&#39;Test passed&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">clui</span> <span class="kn">import</span> <span class="n">base_clui</span>
+<span class="n">ui</span> <span class="o">=</span> <span class="n">base_clui</span><span class="p">()</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">condition_tests</span> <span class="o">=</span> <span class="p">[</span><span class="n">my_condition_test</span><span class="p">]</span> <span class="c">#Defaults to empty list</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="exit-callables">
+<h2>Exit callables<a class="headerlink" href="#exit-callables" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="boolean-logic">
+<h2>Boolean Logic<a class="headerlink" href="#boolean-logic" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="extended-attributes">
+<h2>Extended attributes<a class="headerlink" href="#extended-attributes" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -61,6 +98,17 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Additional control</a><ul>
+<li><a class="reference internal" href="#condition-tests">Condition tests</a></li>
+<li><a class="reference internal" href="#exit-callables">Exit callables</a></li>
+<li><a class="reference internal" href="#boolean-logic">Boolean Logic</a></li>
+<li><a class="reference internal" href="#extended-attributes">Extended attributes</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="basic.html"
                         title="previous chapter">Basic Usage</a></p>

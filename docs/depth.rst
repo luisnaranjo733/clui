@@ -4,7 +4,39 @@ Additional control
 Condition tests
 ---------------
 
-Heuh
+1) **Must** take *two* positional arguments.
+
+   The first positional argument is the last string that the user entered.
+   
+   The second positional argument is an integer representation of the number
+   of loops the clui has gone through.
+      
+2) **Must** return a *boolean*.
+
+   You can return a single boolean.
+   
+   *You can also return a tuple or list*, with the boolean being listed first.
+   *Everything listed after that boolean*, will be printed to the screen
+   
+   For example::
+
+    def my_condition_test(user_input,looped): #TODO: Move this docstring into actual documentation
+        "A test function for a clui."
+        
+        if looped > 5: #Looped is an integer, that increases by one after each loop
+            return (False,'test failed','I don't want you to run after 5 loops!')
+            
+        return (True,'Test passed')
+        
+    from clui import base_clui
+    
+    ui = base_clui()
+    ui.condition_tests = [my_condition_test] #Defaults to empty list
+
+
+Exit callables
+--------------
+
 
 Boolean Logic
 -------------
