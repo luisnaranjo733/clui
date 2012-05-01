@@ -33,7 +33,7 @@ def my_condition_test(user_input,looped): #TODO: Move this docstring into actual
    You can also return a tuple or list, with the boolean being listed first.
    Everything listed after that boolean, will be printed to the screen.
 """
-    if looped > 2:
+    if looped > 5:
         return (False,'test failed')
     return (True,'Test passed')
     

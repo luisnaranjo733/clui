@@ -2,182 +2,19 @@
 C.ommand L.ine U.ser I.nterface
 *******************************
 
+[image]
+
 **Cross platform command line user interfaces generated on the fly.**
    Created by *Luis Naranjo Gomez*
 
+**UNDER DEVELOPMENT**
 
-Installation
-============
-
-As *always*, you should use to pip to install.
-
->>> pip install clui
-
-
-Example Usage
-=============
-
->>> from clui import base_clui
->>>
->>> def add_flashcards():
-...     print "Adding some flashcards..."
-...     print "All done!"
-...
->>> def delete_flashcards():
-...     print "Deleting all of the flashcards..."
-...     print "Done!"
-...
->>> class will_not_be_named(object):
-...     def __init__(self):
-...         print "This function will not be the name of added menu option, because it was not added first."
-...
->>> ui = base_clui(
-...     title = 'Flashcards',
-...     initial_message = 'Flashcards is a python utility designed to help you know your stuff!',
-...     exit_message = 'Bye! I hope you enjoyed your stay.',
-... )
->>> ui.exit_words.append('idgaf')
->>> ui.add(
-...     callables=[delete_flashcards,will_not_be_named],
-...     patterns=[
-...         '[Rr]emove flashcards',
-...         '[Dd]elete flashcards!?'
-...     ],
-...     #display_callables = True,
-... )
->>>
->>> ui.add(
-...     callables=[add_flashcards],
-...     patterns=['[Aa]dd flashcards','add'],
-...     display_name='Add some flashcards!',
-...     #display_callables = True,
-... )
->>>
-
-
-Example Output
-==============
-
-This is what the *clui* might look like!
-
-[image]
-
-
-Customization
-=============
-
-class class clui.base_clui(**kwargs)
-
-   This is the base class for a command line user interface.
-
-   You can control the style of the interface with the attributes
-   **AND OR** parameters provided in this class. *All are optional.*
-   Some more than others.
-
-   title (**string**):
-      The title of your *clui*
-
-   initial_message (**string**):
-      Use this for any additional information you want to display
-      (usage, author, license, version, homepage, etc...)
-
-   exit_words (**list**):
-      A list of regex strings. It matches the user's input to these
-      and exits the *clui* if it finds a match.
-
-      The **defaults** are ['^end$','^exit$','^leave$','^bye'$]
-
-   exit_message (**string**):
-      This is the message that *clui* displays when the user exits the
-      interface.
-
-   start_with_zero (**boolean**):
-      This toggles the start of the menu's index between 0 and 1.
-
-      This affects the menu options' pattern as well.
-
-   display_all_callables (**boolean**):
-      If activated, a string representation of the list which contains
-      the callables for each menu option will be displayed.
-
-   display_all_regex (**boolean**):
-
-   display_exit_words (**boolean**):
-
-   exit_callables (**list**):
-
-   input_message (**string**):
-
-   condition (**BOOLEAN**):
-
-   condition_tests (**list of callables**):
-
-   enable_clear (**boolean**):
-
-   add(**kwargs)
-
-      This method adds menu options to the menu.
-
-      It has the following parameters:
-
-      callables (positional)
-         This is a **list** of callable functions/classes that *clui*
-         will execute for that menu option (in the order that they
-         were defined). These callables **do not take any positional
-         parameters** at this time.
-
-      patterns (defaults to the name of the first callable)
-         A **list** of regex strings that *clui* will use to match to
-         user input (in order). If a match is found, the corresponding
-         callables will executed.
-
-      display_name (defaults to the name of the first callable)
-         This is the **string** that will actually be displayed to the
-         user for this option in the menu.
-
-      display_callables (defaults to False)
-         This boolean defines controls whether or not an additional
-         list of callables is added for *each* menu option.
-
-      display_regex (bool - defaults to False)
-         This toggles the display of the list of regex strings that
-         correspond to each menu option.
-
-   execute()
-
-      Mainloop of the *clui*.
-
-      Only hit this after you have added all of the options for your
-      menu. It will enter a loop, and it will break in only three
-      scenarios:
-
-      1. The user's input matches one of the *exit words* patterns.
-
-      2. One of the user defined *condition tests* returns False
-
-      3. The user exists the terminal/shell
-
-
-Dependencies
-============
-
-clui depends on colorama for coloring text.
-
-This is the only dependency other than the standard python library.
-
-
-Glossary
-========
-
-clui
-   A clui is an abbreviation for Command Line User Interface
-
-
-Indices and tables
-******************
-
-* *Index*
-
-* *Module Index*
-
-* *Search Page*
+* Installation
+* Basic Usage
+  * Example Usage
+  * Example Output
+* Let's go a little more in depth
+* Additional information
+  * Dependencies
+  * Glossary
+  * Indices and tables
