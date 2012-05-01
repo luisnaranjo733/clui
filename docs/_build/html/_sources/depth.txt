@@ -23,11 +23,13 @@ Condition tests
     def my_condition_test(user_input,looped): #TODO: Move this docstring into actual documentation
         "A test function for a clui."
         
-        if looped > 5:
-            return (False,'test failed')
+        if looped > 5: #Looped is an integer, that increases by one after each loop
+            return (False,'test failed','I don't want you to run after 5 loops!')
+            
         return (True,'Test passed')
         
     from clui import base_clui
+    
     ui = base_clui()
     ui.condition_tests = [my_condition_test] #Defaults to empty list
 

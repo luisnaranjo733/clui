@@ -1,6 +1,16 @@
 Additional information
 ======================
 
+Platforms
+---------
+
+Supported platforms
+
+Bugs
+-----
+
+* When a user defined test returns False, the while loop breaks before hitting the exit message.
+
 Dependencies
 ------------
 

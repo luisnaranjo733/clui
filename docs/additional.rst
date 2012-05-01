@@ -6,10 +6,10 @@ Platforms
 
 Supported platforms
 
-Issues
-------
+Bugs
+-----
 
-Bugs go here
+* Blank bug 1
 
 Dependencies
 ------------

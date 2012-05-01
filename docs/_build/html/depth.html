@@ -66,17 +66,18 @@ of loops the clui has gone through.</p>
 <p><em>You can also return a tuple or list</em>, with the boolean being listed first.
 <em>Everything listed after that boolean</em>, will be printed to the screen</p>
 <p>For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">my_condition_test</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span><span class="n">looped</span><span class="p">):</span> <span class="c">#TODO: Move this docstring into actual documentation</span>
-    <span class="s">&quot;A test function for a clui.&quot;</span>
+<div class="highlight-python"><pre>def my_condition_test(user_input,looped): #TODO: Move this docstring into actual documentation
+    "A test function for a clui."
 
-    <span class="k">if</span> <span class="n">looped</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span><span class="s">&#39;test failed&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span><span class="s">&#39;Test passed&#39;</span><span class="p">)</span>
+    if looped &gt; 5: #Looped is an integer, that increases by one after each loop
+        return (False,'test failed','I don't want you to run after 5 loops!')
 
-<span class="kn">from</span> <span class="nn">clui</span> <span class="kn">import</span> <span class="n">base_clui</span>
-<span class="n">ui</span> <span class="o">=</span> <span class="n">base_clui</span><span class="p">()</span>
-<span class="n">ui</span><span class="o">.</span><span class="n">condition_tests</span> <span class="o">=</span> <span class="p">[</span><span class="n">my_condition_test</span><span class="p">]</span> <span class="c">#Defaults to empty list</span>
-</pre></div>
+    return (True,'Test passed')
+
+from clui import base_clui
+
+ui = base_clui()
+ui.condition_tests = [my_condition_test] #Defaults to empty list</pre>
 </div>
 </li>
 </ol>
