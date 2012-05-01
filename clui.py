@@ -36,12 +36,12 @@ class color(object): #TODO: Move this class elsewhere
         self.NORMAL = default
         self.BRIGHT = default
         self.RESET_ALL = default
+
 if not coloring:
     Fore = Back = Style = color()
     init = deinit = color
-
-init() #required for x-platform support by colorama
-
+    init()
+        
 TODO = """
 Resolve dependency issues - what to do if colorama is unavailable?
 UPDATE DOCUMENTATION
@@ -121,8 +121,10 @@ enable_clear (**boolean**):
         self.condition = kwargs.pop('condition',True)
         self.condition_tests = kwargs.pop('condition_tests',[])
         self.enable_clear = kwargs.pop('enable_clear',True)
+        self.color = kwargs.pop('color',True) #TODO: Implement this or forget about it
         self.menu = [] #List of options for the clui to use
         self.looped = 0 #Gets a +1 for each loop. In case tracking the amount of loops is ever important.
+
 
     def __menu__(self):
         """Returns a string representation of what the menu should look like.

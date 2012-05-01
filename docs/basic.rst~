@@ -1,0 +1,39 @@
+Basic Usage
+===========
+
+Example Usage
+-------------
+
+TOBEREMOVED
+
+>>> from clui import base_clui
+>>> 
+>>> def add_flashcards():
+...     print "Adding some flashcards..."
+...     print "All done!"
+... 
+>>> def delete_flashcards():
+...     print "Deleting all of the flashcards..."
+...     print "Done!"
+... 
+>>> class will_not_be_named(object):
+...     def __init__(self):
+...         print "This class will not be the name of added menu option, because it was not added first."
+... 
+>>> ui = base_clui(
+...     title = 'Flashcards',
+...     initial_message = 'Flashcards is a python utility designed to help you know your stuff!',
+...     exit_message = 'Bye! I hope you enjoyed your stay.',
+... )
+
+
+Example Output
+--------------
+
+This is what the :term:`clui` might look like!
+
+.. images goes here image:: sample_output.png
+
+.. _customization:
+
+
