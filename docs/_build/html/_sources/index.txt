@@ -16,11 +16,14 @@ clui
    additional
    installation
 
+
 Indices and tables
 ------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
 
 
