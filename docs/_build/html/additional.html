@@ -37,6 +37,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="installation.html" title="Installation"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -55,7 +58,9 @@
 <h1>Additional information<a class="headerlink" href="#additional-information" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="platforms">
 <h2>Platforms<a class="headerlink" href="#platforms" title="Permalink to this headline">¶</a></h2>
-<p>Supported platforms</p>
+<p>clui was developed on Ubuntu Linux Precise Pangolin (12.04) <strong>and</strong> Mac OS Lion</p>
+<p>Colorama claims to be cross platform. I have yet to test it.</p>
+<p>It is bundled with clui, under the same license.</p>
 </div>
 <div class="section" id="bugs">
 <h2>Bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
@@ -68,9 +73,15 @@
 <p>clui depends on <a class="reference external" href="http://pypi.python.org/pypi/colorama">colorama</a> for coloring text.</p>
 <p>This is the only dependency other than the standard python library.</p>
 </div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>BSD</p>
+</div>
 <div class="section" id="glossary">
 <h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
 <dl class="glossary docutils">
+<dt id="term-callables">callables</dt>
+<dd>Callables in python are either function objects, or class objects.</dd>
 <dt id="term-clui">clui</dt>
 <dd>A clui is an abbreviation for Command Line User Interface</dd>
 <dt id="term-condition">condition</dt>
@@ -82,7 +93,18 @@ return a value that is not the condition.</p>
 <p class="last">The condition defaults to True.</p>
 </dd>
 <dt id="term-condition-tests">condition tests</dt>
-<dd>asdfa</dd>
+<dd>Condition tests are used to regulate the loopage of the
+program, by returning, or not returning, the set condition.</dd>
+<dt id="term-exit-callables">exit callables</dt>
+<dd>A list of callables that are called right before the program
+exits, due to an exit word being matched to the user input.</dd>
+<dt id="term-exit-words">exit words</dt>
+<dd><p class="first">A list of regex patterns that are used to match to the
+user input.</p>
+<p class="last">If a match is found, exit_callables (if any)
+are called, the exit_message (if present) is displayed,
+and the clui is broken.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="indices-and-tables">
@@ -107,6 +129,7 @@ return a value that is not the condition.</p>
 <li><a class="reference internal" href="#platforms">Platforms</a></li>
 <li><a class="reference internal" href="#bugs">Bugs</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
 <li><a class="reference internal" href="#glossary">Glossary</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
@@ -147,6 +170,9 @@ return a value that is not the condition.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="installation.html" title="Installation"
              >next</a> |</li>

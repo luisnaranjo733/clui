@@ -4,7 +4,11 @@ Additional information
 Platforms
 ---------
 
-Supported platforms
+clui was developed on Ubuntu Linux Precise Pangolin (12.04) **and** Mac OS Lion
+
+Colorama claims to be cross platform. I have yet to test it.
+
+It is bundled with clui, under the same license.
 
 Bugs
 -----
@@ -20,10 +24,18 @@ This is the only dependency other than the standard python library.
 
 .. _colorama: http://pypi.python.org/pypi/colorama
 
+License
+-------
+
+BSD
+
 Glossary
 --------
 
 .. glossary::
+      
+   callables
+      Callables in python are either function objects, or class objects.
       
    clui
       A clui is an abbreviation for Command Line User Interface
@@ -40,7 +52,21 @@ Glossary
       The condition defaults to True.
       
    condition tests
-      asdfa
+      Condition tests are used to regulate the loopage of the
+      program, by returning, or not returning, the set condition.
+      
+   exit callables
+      A list of callables that are called right before the program
+      exits, due to an exit word being matched to the user input.
+      
+   exit words
+      A list of regex patterns that are used to match to the
+      user input.
+      
+      If a match is found, exit_callables (if any)
+      are called, the exit_message (if present) is displayed,
+      and the clui is broken.
+
 
 Indices and tables
 ------------------

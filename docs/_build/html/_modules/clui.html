@@ -35,6 +35,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li><a href="../index.html">clui 1.0 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
@@ -76,7 +79,7 @@
 
 <span class="s">&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="base_clui"><a class="viewcode-back" href="../depth.html#clui.base_clui">[docs]</a><span class="k">class</span> <span class="nc">base_clui</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="base_clui"><a class="viewcode-back" href="../source.html#clui.base_clui">[docs]</a><span class="k">class</span> <span class="nc">base_clui</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is the base class for a command line user interface.</span>
 <span class="sd">    You can control the style of the interface with the attributes</span>
@@ -163,7 +166,7 @@
                 <span class="n">function</span><span class="p">()</span>
                 <span class="k">print</span> <span class="n">buff</span>
 
-<div class="viewcode-block" id="base_clui.add"><a class="viewcode-back" href="../depth.html#clui.base_clui.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">callables</span><span class="p">,</span><span class="n">patterns</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">display_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">synopsis</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">display_callables</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">display_regex</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="base_clui.add"><a class="viewcode-back" href="../source.html#clui.base_clui.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">callables</span><span class="p">,</span><span class="n">patterns</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">display_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">synopsis</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">display_callables</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">display_regex</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This method adds commands to the self.menu list, which is used to gen</span>
 <span class="sd">        erate the clui.</span>
@@ -223,7 +226,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="base_clui.execute"><a class="viewcode-back" href="../depth.html#clui.base_clui.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c">#Playing with the idea of uesr defined while loop conditions, and callable tests for said conditions</span>
+<div class="viewcode-block" id="base_clui.execute"><a class="viewcode-back" href="../source.html#clui.base_clui.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c">#Playing with the idea of uesr defined while loop conditions, and callable tests for said conditions</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is the mainloop of the clui. Only hit this after you have added all</span>
 <span class="sd">        of the options for your menu, because it will enter a loop, and it won&#39;t exit</span>
@@ -303,6 +306,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li><a href="../index.html">clui 1.0 documentation</a> &raquo;</li>
           <li><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>

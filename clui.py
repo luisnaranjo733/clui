@@ -71,7 +71,7 @@ initial_message (**string**):
    Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)
  
 exit_words (**list**):
-   A list of `regex`_ strings. It matches the user's input to these and exits the :term:`clui` if it finds a match.
+   A list of regex strings. It matches the user's input to these and exits the :term:`clui` if it finds a match.
    
    The **defaults** are ['^end$','^exit$','^leave$','^bye'$]
 
@@ -162,6 +162,8 @@ enable_clear (**boolean**):
     def __call__(self,callables): #callables is a list of callables. Who would've guessed?
         buff = '-'*72
         for function in callables:
+            if type(function) == int or type(function) == str or type(function) == float: #If its just a value, not a callable
+                print Fore.GREEN + "\t'%s'\n" % function + Fore.RESET
             try:
                 callable_name = function.func_name #Only works for functions
             except AttributeError:
@@ -259,9 +261,9 @@ display_regex (bool - defaults to False)
 Only hit this after you have added all of the options for your menu.
 It will enter a loop, and it will break in only three scenarios:
 
-1) The user's input matches one of the :ref:`exit words <customization>` patterns. 
+1) The user's input matches one of the :term:`exit words` patterns. 
 
-2) One of the user defined :ref:`condition tests <customization>` returns False
+2) One of the user defined :term:`condition tests` returns False
 
 3) The user exists the terminal/shell
 

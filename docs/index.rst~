@@ -10,13 +10,11 @@ clui
 
 .. toctree::
    :maxdepth: 2
-   
+
+   installation
    basic
    depth
    additional
-   installation
+   source
 
 
-
-   
-.. py:function:: Timer.repeat([repeat=3[, number=1000000]])

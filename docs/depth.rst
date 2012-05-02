@@ -60,6 +60,11 @@ Would give you this:
 Exit callables
 --------------
 
+Clui lets you define :term:`exit callables`, which are called before your clui terminates.
+
+They are defined in the BASE_CLUI attributes, but can also be passed as named arguments
+
+
 
 Boolean Logic
 -------------
@@ -67,3 +72,6 @@ Boolean Logic
 
 Extended attributes
 --------------------
+
+Clear
+-----
