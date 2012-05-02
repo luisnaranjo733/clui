@@ -1,8 +1,0 @@
-Example Usage
-=============
-
-.. automodule:: clui
-   :members:
-   :platform: Linux, Mac, Windows
-   :synopsis: An open source python object-ooriented API for creating command line user interfaces on the fly.
-

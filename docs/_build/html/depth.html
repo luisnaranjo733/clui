@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="clui 1.0 documentation" href="index.html" />
     <link rel="next" title="Additional information" href="additional.html" />
-    <link rel="prev" title="Basic Usage" href="basic.html" /> 
+    <link rel="prev" title="Source Code Documentation" href="source.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,13 +37,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="additional.html" title="Additional information"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="basic.html" title="Basic Usage"
+          <a href="source.html" title="Source Code Documentation"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">clui 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -101,19 +98,62 @@ of loops the clui has gone through.</p>
 </pre></div>
 </div>
 <p>Would give you this:</p>
-<img alt="_images/condition.png" src="_images/condition.png" />
+<img alt="condition.png" src="condition.png" />
 </div>
 </div>
 <div class="section" id="exit-callables">
 <h2>Exit callables<a class="headerlink" href="#exit-callables" title="Permalink to this headline">¶</a></h2>
 <p>Clui lets you define <a class="reference internal" href="additional.html#term-exit-callables"><em class="xref std std-term">exit callables</em></a>, which are called before your clui terminates.</p>
-<p>They are defined in the BASE_CLUI attributes, but can also be passed as named arguments</p>
+<p>They are defined in the BASE_CLUI(link) attributes, but can also be passed as named arguments</p>
 </div>
-<div class="section" id="boolean-logic">
-<h2>Boolean Logic<a class="headerlink" href="#boolean-logic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="base-clui-link-attributes-parameters">
+<h2>base_clui (link) attributes/parameters<a class="headerlink" href="#base-clui-link-attributes-parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>title (<strong>string</strong>):</dt>
+<dd>The title of your <a class="reference internal" href="additional.html#term-clui"><em class="xref std std-term">clui</em></a></dd>
+<dt>initial_message (<strong>string</strong>):</dt>
+<dd>Use this for any additional information you want to display (usage, author, license, version, homepage, etc...)</dd>
+<dt>exit_words (<strong>list</strong>):</dt>
+<dd><p class="first">A list of regex strings. It matches the user&#8217;s input to these and exits the <a class="reference internal" href="additional.html#term-clui"><em class="xref std std-term">clui</em></a> if it finds a match.</p>
+<p class="last">The <strong>defaults</strong> are [&#8216;^end$&#8217;,&#8217;^exit$&#8217;,&#8217;^leave$&#8217;,&#8217;^bye&#8217;$]</p>
+</dd>
+<dt>exit_message (<strong>string</strong>):</dt>
+<dd>This is the message that <a class="reference internal" href="additional.html#term-clui"><em class="xref std std-term">clui</em></a> displays when the user exits the interface.</dd>
+<dt>start_with_zero (<strong>boolean</strong>):</dt>
+<dd><p class="first">This toggles the start of the menu&#8217;s index between 0 and 1.</p>
+<p class="last">This affects the menu options&#8217; pattern as well.</p>
+</dd>
+<dt>display_all_callables (<strong>boolean</strong>):</dt>
+<dd>If activated, a string representation of the list which contains the callables for each menu option will be displayed.</dd>
+</dl>
+<p>display_all_regex (<strong>boolean</strong>):</p>
+<p>display_exit_words (<strong>boolean</strong>):</p>
+<p>exit_callables (<strong>list</strong>):</p>
+<p>input_message (<strong>string</strong>):</p>
+<p>condition (<strong>BOOLEAN</strong>):</p>
+<p>condition_tests (<strong>list of callables</strong>):</p>
+<p>enable_clear (<strong>boolean</strong>):</p>
 </div>
-<div class="section" id="extended-attributes">
-<h2>Extended attributes<a class="headerlink" href="#extended-attributes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="base-clui-add-parameters-link">
+<h2>base_clui.add parameters (link)<a class="headerlink" href="#base-clui-add-parameters-link" title="Permalink to this headline">¶</a></h2>
+<p>It has the following parameters:</p>
+<dl class="docutils">
+<dt>callables (positional)</dt>
+<dd>This is a <strong>list</strong> of callable functions/classes that <a class="reference internal" href="additional.html#term-clui"><em class="xref std std-term">clui</em></a> will execute
+for that menu option (in the order that they were defined).
+These callables <strong>do not take any positional parameters</strong> at this time.</dd>
+<dt>patterns (defaults to the name of the first callable)</dt>
+<dd>A <strong>list</strong> of regex strings that <a class="reference internal" href="additional.html#term-clui"><em class="xref std std-term">clui</em></a> will use to match to user input (in order).
+If a match is found, the corresponding callables will executed.</dd>
+<dt>display_name (defaults to the name of the first callable)</dt>
+<dd>This is the <strong>string</strong> that will actually be displayed to the user for
+this option in the menu.</dd>
+<dt>display_callables (defaults to False)</dt>
+<dd>This boolean defines controls whether or not an additional list of callables is
+added for <em>each</em> menu option.</dd>
+<dt>display_regex (bool - defaults to False)</dt>
+<dd>This toggles the display of the list of regex strings that correspond to each menu option.s</dd>
+</dl>
 </div>
 <div class="section" id="clear">
 <h2>Clear<a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h2>
@@ -135,16 +175,16 @@ of loops the clui has gone through.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#exit-callables">Exit callables</a></li>
-<li><a class="reference internal" href="#boolean-logic">Boolean Logic</a></li>
-<li><a class="reference internal" href="#extended-attributes">Extended attributes</a></li>
+<li><a class="reference internal" href="#base-clui-link-attributes-parameters">base_clui (link) attributes/parameters</a></li>
+<li><a class="reference internal" href="#base-clui-add-parameters-link">base_clui.add parameters (link)</a></li>
 <li><a class="reference internal" href="#clear">Clear</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="basic.html"
-                        title="previous chapter">Basic Usage</a></p>
+  <p class="topless"><a href="source.html"
+                        title="previous chapter">Source Code Documentation</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="additional.html"
                         title="next chapter">Additional information</a></p>
@@ -177,13 +217,10 @@ of loops the clui has gone through.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="additional.html" title="Additional information"
              >next</a> |</li>
         <li class="right" >
-          <a href="basic.html" title="Basic Usage"
+          <a href="source.html" title="Source Code Documentation"
              >previous</a> |</li>
         <li><a href="index.html">clui 1.0 documentation</a> &raquo;</li> 
       </ul>

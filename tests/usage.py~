@@ -24,8 +24,8 @@ def my_condition_test(user_input,looped): #TODO: Move this docstring into actual
     "A test function for a clui."
     
     if looped > 5:
-        return (True,'test failed')
-    return ('a','Test passed')
+        return (False,'test failed')
+    return (True,'Test passed')
     
 ui = base_clui() #Create an instance of the base_clui class
 
@@ -35,7 +35,6 @@ ui.title = 'Flashcards'
 ui.initial_message = 'Welcome!'
 ui.exit_words.append('^(goose|geese)$')
 ui.exit_message = 'Thank you for using flashcards! Bye!' #Optional
-ui.condition = 'a'
 #ui.start_with_zero = True #Defaults to False
 #ui.display_all_callables = True #Defaults to False
 #ui.display_all_regex = True #Defaults to False

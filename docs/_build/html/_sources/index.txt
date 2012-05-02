@@ -11,10 +11,16 @@ clui
 .. toctree::
    :maxdepth: 2
    
-   basic
+   source
    depth
    additional
    installation
-   source
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 

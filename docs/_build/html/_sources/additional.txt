@@ -67,12 +67,4 @@ Glossary
       are called, the exit_message (if present) is displayed,
       and the clui is broken.
 
-
-Indices and tables
-------------------
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
 .. _regex: http://www.regular-expressions.info/quickstart.html
