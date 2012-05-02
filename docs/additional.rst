@@ -27,6 +27,20 @@ Glossary
       
    clui
       A clui is an abbreviation for Command Line User Interface
+      
+   condition
+      A value (string, integer, float) that you can pass to clui
+      for condition tests.
+      
+      To break the main loop of the clui, have a condition test
+      return a value that is not the condition. 
+       
+      If you want it to continue, then return the condition.
+      
+      The condition defaults to True.
+      
+   condition tests
+      asdfa
 
 Indices and tables
 ------------------

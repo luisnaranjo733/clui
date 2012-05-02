@@ -1,6 +1,7 @@
-from os import getcwd
-from sys import path
-path.append(getcwd())
+from os import getcwd #FOR TESTING
+from sys import path #FOR TESTING
+path.append(getcwd()) #FOR TESTING
+
 from clui import base_clui
 
 def add_flashcards():
@@ -23,8 +24,8 @@ def my_condition_test(user_input,looped): #TODO: Move this docstring into actual
     "A test function for a clui."
     
     if looped > 5:
-        return (False,'test failed')
-    return (True,'Test passed')
+        return (True,'test failed')
+    return ('a','Test passed')
     
 ui = base_clui() #Create an instance of the base_clui class
 
@@ -34,6 +35,7 @@ ui.title = 'Flashcards'
 ui.initial_message = 'Welcome!'
 ui.exit_words.append('^(goose|geese)$')
 ui.exit_message = 'Thank you for using flashcards! Bye!' #Optional
+ui.condition = 'a'
 #ui.start_with_zero = True #Defaults to False
 #ui.display_all_callables = True #Defaults to False
 #ui.display_all_regex = True #Defaults to False

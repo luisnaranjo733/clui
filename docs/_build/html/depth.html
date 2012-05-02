@@ -55,45 +55,51 @@
 <h1>Additional control<a class="headerlink" href="#additional-control" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="condition-tests">
 <h2>Condition tests<a class="headerlink" href="#condition-tests" title="Permalink to this headline">¶</a></h2>
+<p>You can pass <a class="reference internal" href="additional.html#term-condition-tests"><em class="xref std std-term">condition tests</em></a> to clui, if you need more fine tuned control over your clui.</p>
+<p>The default <a class="reference internal" href="additional.html#term-condition"><em class="xref std std-term">condition</em></a> is <strong>True</strong>, but you can change that to <em>any thing you want</em>.</p>
+<p><em>Make sure you can match that value</em>.</p>
+<div class="section" id="requirements-of-condition-tests">
+<h3>Requirements of condition tests<a class="headerlink" href="#requirements-of-condition-tests" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p class="first"><strong>Must</strong> take <em>two</em> positional arguments.</p>
 <p>The first positional argument is the last string that the user entered.</p>
 <p>The second positional argument is an integer representation of the number
 of loops the clui has gone through.</p>
 </li>
-<li><p class="first"><strong>Must</strong> return a <em>boolean</em>.</p>
-<p>You can return a single boolean.</p>
-<p><em>You can also return a tuple or list</em>, with the <strong>boolean listed first</strong>.
-<em>Everything listed after that boolean</em>, will be seperated by newlines,
-and then printed to the screen.</p>
-<p>For example, this:</p>
+<li><p class="first"><strong>Must</strong> return a <em>condition</em>, <strong>or</strong> a list/tuple with a <em>condition</em> in it.</p>
+<p>If a list or tuple is used, the <em>condition</em> <strong>must be the first item</strong> in the list.</p>
+<p>Everything value in the container <em>after that</em> will be printed to the screen!</p>
+</li>
+</ol>
+</div>
+<div class="section" id="an-example">
+<h3>An example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">clui</span> <span class="kn">import</span> <span class="n">base_clui</span>
 
 <span class="k">def</span> <span class="nf">my_condition_test</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span><span class="n">looped</span><span class="p">):</span>
-    <span class="s">&quot;A test function for a clui.&quot;</span>
+    <span class="s">&quot;A condition test function for a clui.&quot;</span>
 
     <span class="k">if</span> <span class="n">looped</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span> <span class="c">#Looped is an integer, that increases by one after each loop</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span><span class="s">&#39;test failed&#39;</span><span class="p">,</span><span class="s">&quot;I don&#39;t want you to run after 3 loops!&quot;</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span><span class="s">&#39;Test passed&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span><span class="s">&#39;Test passed&#39;</span><span class="p">)</span> <span class="c">#IMPORTANT - without returning the set condition, your loop would fail.</span>
 
-<span class="k">def</span> <span class="nf">a_function</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">a_function</span><span class="p">():</span> <span class="c">#This is a generic callable. Just for fun.</span>
     <span class="k">print</span> <span class="s">&quot;I am useless!&quot;</span>
 
 <span class="n">ui</span> <span class="o">=</span> <span class="n">base_clui</span><span class="p">()</span>
 <span class="n">ui</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#39;Testing&#39;</span>
 <span class="n">ui</span><span class="o">.</span><span class="n">initial_message</span> <span class="o">=</span> <span class="s">&quot;Doin&#39; some test!&quot;</span>
-<span class="n">ui</span><span class="o">.</span><span class="n">condition_tests</span> <span class="o">=</span> <span class="p">[</span><span class="n">my_condition_test</span><span class="p">]</span> <span class="c">#Defaults to empty list</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">condition_tests</span> <span class="o">=</span> <span class="p">[</span><span class="n">my_condition_test</span><span class="p">]</span>
 
 <span class="n">ui</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">display_name</span><span class="o">=</span><span class="s">&#39;option&#39;</span><span class="p">,</span><span class="n">callables</span><span class="o">=</span><span class="p">[</span><span class="n">a_function</span><span class="p">,</span><span class="s">&#39;Wheee!&#39;</span><span class="p">])</span>
 <span class="n">ui</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">display_name</span><span class="o">=</span><span class="s">&#39;moar stuff&#39;</span><span class="p">,</span><span class="n">patterns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;^moar *(stuff)?$&#39;</span><span class="p">],</span><span class="n">callables</span><span class="o">=</span><span class="p">[</span><span class="n">a_function</span><span class="p">])</span>
 <span class="n">ui</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
 </pre></div>
 </div>
-</li>
-</ol>
 <p>Would give you this:</p>
 <img alt="_images/condition.png" src="_images/condition.png" />
+</div>
 </div>
 <div class="section" id="exit-callables">
 <h2>Exit callables<a class="headerlink" href="#exit-callables" title="Permalink to this headline">¶</a></h2>
@@ -115,7 +121,11 @@ and then printed to the screen.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Additional control</a><ul>
-<li><a class="reference internal" href="#condition-tests">Condition tests</a></li>
+<li><a class="reference internal" href="#condition-tests">Condition tests</a><ul>
+<li><a class="reference internal" href="#requirements-of-condition-tests">Requirements of condition tests</a></li>
+<li><a class="reference internal" href="#an-example">An example</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#exit-callables">Exit callables</a></li>
 <li><a class="reference internal" href="#boolean-logic">Boolean Logic</a></li>
 <li><a class="reference internal" href="#extended-attributes">Extended attributes</a></li>
