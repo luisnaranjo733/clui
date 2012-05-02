@@ -1,7 +1,7 @@
 clui
 ****
 
-.. image:: _static/logo/gold_white.png
+.. image:: images/logo/gold_white.png
 
 **Cross platform command line user interfaces generated on the fly.**
    Created by *Luis Naranjo Gomez*
@@ -16,14 +16,13 @@ clui
    additional
    installation
 
-
 Indices and tables
 ------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-=======
+
 
 
 
