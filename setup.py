@@ -4,8 +4,9 @@ except ImportError:
     from distutils.core import setup
 
 import os
+
 def read(fname):
-    return open(fname).read()
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name = "clui",
@@ -19,10 +20,9 @@ setup(
     #entry_points = {
     #'console_scripts': ['skel = skel:main']
     #},
-    py_modules = ['clui'],
-    scripts = ['clui.py'],
+    packages = ['clui'],
     platforms = 'any',
-    #long_description=read('docs/index.rst'),
+    long_description=read('README.rst'),
     #packages=['skeleton'],
     #include_package_data = True,
     #package_data = {

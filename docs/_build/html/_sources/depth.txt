@@ -1,6 +1,11 @@
-Additional control
-==================
+Usage
+=====
 
+.. automodule:: clui
+
+.. autoclass:: base_clui
+   :members:
+   
 Condition tests
 ----------------
 

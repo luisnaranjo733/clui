@@ -12,8 +12,7 @@ Fork me on `github`_!
 .. toctree::
    :maxdepth: 2
    
-   source
-   depth
+   Usage <depth>
    additional
    installation
 

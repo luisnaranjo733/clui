@@ -79,11 +79,12 @@ provided in this class. *All are optional.* Some more than others."""
         self.start_with_zero = kwargs.pop('start_with_zero',False)
         self.display_all_callables = kwargs.pop('display_all_callables',False)
         self.display_all_regex = kwargs.pop('display_all_regex',False)
-        self.display_exit_words = kwargs.pop('display_exit_words',False)
+        self.display_exit_words = kwargs.pop('display_exit_words',True)
         self.exit_callables = kwargs.pop('exit_callables',[])
         self.input_message = kwargs.pop('input_message','> ')
         self.condition = kwargs.pop('condition',True)
         self.condition_tests = kwargs.pop('condition_tests',[])
+        self.buffer = kwargs.pop('buffer','')
 
         self.enable_clear = kwargs.pop('enable_clear',True)
         self.color = kwargs.pop('color',True) #TODO: Implement this or forget about it
@@ -142,11 +143,11 @@ provided in this class. *All are optional.* Some more than others."""
 
     def __chexit__(self,user_input,exit=False):
             
-            for pattern in self.exit_words:#checking for exit words
+            for pattern in self.exit_words:# checking for exit words
                 match = re.search(pattern,user_input)
                 if match or exit:
                     self.condition=False
-                    #to break it
+                    #to break the loop
                     self.__call__(self.exit_callables)
                     if self.exit_message:
                         print Fore.RED + Style.BRIGHT + self.exit_message + Fore.RESET + Style.RESET_ALL
@@ -227,7 +228,7 @@ It will enter a loop, and it will break in only three scenarios:
             print ''
 
         if self.display_exit_words:
-            print "Match one of the following regex patterns to escape: " + Fore.RED + str(self.exit_words) + Fore.RESET
+            print "Match one of the following regex patterns to escape:\n\n" + Fore.RED + str(self.exit_words) + Fore.RESET
             print ''
             
         for option in self.menu:
@@ -240,6 +241,7 @@ It will enter a loop, and it will break in only three scenarios:
             #print '*'*72+"\n"
             print self.__menu__() #gen menu as string
             user_input = raw_input(self.input_message)
+            if self.buffer: print self.buffer
 
             if (user_input == 'clear' or user_input == 'cls') and self.enable_clear:
                 self.__clear__() #makes os call to clear the screen

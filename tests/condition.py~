@@ -18,7 +18,7 @@ def a_function(): #This is a generic callable. Just for fun.
 ui = base_clui()
 ui.title = 'Testing'
 ui.initial_message = "Doin' some test!"
-ui.condition_tests = [my_condition_test]
+#ui.condition_tests = [my_condition_test]
 
 ui.add(display_name='option',callables=[a_function,'Wheee!'])
 ui.add(display_name='moar stuff',patterns=['^moar *(stuff)?$'],callables=[a_function])

@@ -35,13 +35,15 @@ ui.title = 'Flashcards'
 ui.initial_message = 'Welcome!'
 ui.exit_words.append('^(goose|geese)$')
 ui.exit_message = 'Thank you for using flashcards! Bye!' #Optional
-#ui.start_with_zero = True #Defaults to False
-#ui.display_all_callables = True #Defaults to False
-#ui.display_all_regex = True #Defaults to False
+ui.buffer = '^'*72  
+
+ui.start_with_zero = True #Defaults to False
 ui.display_exit_words = True #Defaults to False
 ui.exit_callables = [exit_function,exit2] 
-ui.input_message = '> ' #Defaults to '> '
+ui.input_message = 'Next: ' #Redundant - defaults to '> ' anyway
 ui.condition_tests = [my_condition_test] #Defaults to empty list
+#ui.display_all_callables = True #Defaults to False
+#ui.display_all_regex = True #Defaults to False
 
 #Here we add 'options' to the menu interface.
 #Each menu option can over-ride the global attributes. #TODO: Implement this
@@ -54,12 +56,12 @@ ui.add(
         '^([Dd]elete|[Rr]emove)( *some)? *flashcards!?$'
     ],
     display_name = 'Delete some flashcards from your set', #What your users will see as the name of this option
+    #display_callables = True,
 ) 
 
-ui.add(
+ui.add( #NOTE THERE IS NO DISPLAY_NAME
     callables=[add_flashcards],
-    patterns = ['^add *(more|some)? *flashcards$',],
-    display_name='Add some flashcards!',
+    patterns = ['^add *(more|some)? *(flashcards?)?$',],
 )
 
 if __name__ == '__main__':
