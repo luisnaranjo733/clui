@@ -1,0 +1,11 @@
+*.pyc
+*.pyc~
+*.pyo
+*.pyo~
+*.py~
+
+*.rst~
+
+TODO
+
+.ropeproject

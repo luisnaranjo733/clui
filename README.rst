@@ -1,0 +1,33 @@
+clui
+****
+
+**Cross platform command line user interfaces generated on the fly.**
+   Created by *Jose Luis Naranjo Gomez*
+
+**UNDER ACTIVE DEVELOPMENT**
+
+Fork me on github!
+
+* Source Code Documentation
+* Additional control
+  * Condition tests
+  * Exit callables
+  * base_clui (link) attributes/parameters
+  * base_clui.add parameters (link)
+  * Clear
+* Additional information
+  * Platforms
+  * Bugs
+  * Dependencies
+  * License
+  * Glossary
+* Installation
+
+Indices and tables
+==================
+
+* *Index*
+
+* *Module Index*
+
+* *Search Page*

@@ -4,11 +4,12 @@ Additional control
 Condition tests
 ----------------
 
-You can pass :term:`condition tests` to clui, if you need more fine tuned control over your clui.
+You can pass user defined :term:`condition tests` to clui, if you need more fine tuned control over your clui.
 
-The default :term:`condition` is **True**, but you can change that to *any thing you want*.
+Condition tests are used to regulate the loopage of the
+      program, by returning, or not returning, the set :term:`condition`.
 
-*Make sure you can match that value*.
+.. note:: The default :term:`condition` is **True**, but you can change that to *any thing you want*, but make sure you can match that value.
 
 Requirements of condition tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

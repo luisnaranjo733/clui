@@ -14,9 +14,8 @@ setup(
     author_email = "luisnaranjo733@hotmail.com",
     description = ("A customizable command line user interface."),
     license = "GNU GPL3",
-    url = "",
-    keywords = "",
-    install_requires= ['colorama == 0.2.4'],
+    url = "https://github.com/doubledubba/clui",
+    keywords = "CLUI clui ui command line user interface",
     #entry_points = {
     #'console_scripts': ['skel = skel:main']
     #},
