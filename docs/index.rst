@@ -3,6 +3,11 @@
 **Cross platform command line user interfaces generated on the fly.**
    Created by *Jose Luis Naranjo Gomez*
 
+clui is designed to wrap around your code.
+There's no need to copy and paste a base template for your UI.
+
+Just configure a clui.
+
 **UNDER ACTIVE DEVELOPMENT**
 
 Fork me on `github`_!
