@@ -56,7 +56,7 @@ An example
 
 Would give you this:
 
-*.. image:: condition.png*
+.. image:: images/condition_test.png
 
 Exit callables
 --------------
