@@ -12,10 +12,9 @@ Fork me on `github`_!
 .. toctree::
    :maxdepth: 2
    
-   Example Usage <example>
+   example
    Tweaking <depth>
    additional
-   installation
 
 Indices and tables
 ------------------

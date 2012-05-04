@@ -17,8 +17,6 @@ class will_not_be_named(object): #classes work too!
 def exit_function():
     print "I am doing stuff that should be done when the program exits!"
 
-def exit2():
-    print "Tearing down stuff..."
     
 def my_condition_test(user_input,looped):
     "A test function for a clui."
@@ -46,7 +44,7 @@ ui.buffer = '^'*72
 
 
 #ui.display_exit_words = True #Defaults to False
-ui.exit_callables = [exit_function,exit2] 
+ui.exit_callables = [exit_function] 
 ui.input_message = 'Next: ' #defaults to '> '
 ui.condition_tests = [my_condition_test] #These are used to refine
 #ui.start_with_zero = True #Defaults to False

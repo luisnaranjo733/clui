@@ -10,7 +10,7 @@ def add_flashcards():
 def delete_flashcards():
     print "Deleting all of the flashcards..."
 
-class will_not_be_named(object):
+class will_not_be_named(object): #classes work too!
     def __init__(self):
         print "This class will not be the name of added menu option, because it was not added first."
 
